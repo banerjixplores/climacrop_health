@@ -1,11 +1,11 @@
 # my_plant_disease_repo/notebook_style/00_notebook_style.py
 
-import os
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
+from pathlib import Path
 from IPython.display import HTML, display
+import seaborn as sns
+import matplotlib.pyplot as plt
+import pandas as pd
+
 
 # ====================================================
 # 1) Seaborn + Matplotlib global style for all notebooks
@@ -44,11 +44,19 @@ __all__ = ["np", "pd", "plt", "sns", "WILD_COLOR", "AG_COLOR"]
 # We assume that `custom.css` lives in a folder named `notebook_style`
 # which is a child of the current working directory (os.getcwd()).
 
-css_path = os.path.join(os.getcwd(), "notebook_style", "custom.css")
-if os.path.exists(css_path):
-    with open(css_path, "r", encoding="utf-8") as f:
-        css = f.read()
-    # Wrap the CSS content in a <style> tag and display it so Jupyter will apply it
-    display(HTML(f"<style>{css}</style>"))
+# CSS injection using STYLE_PATH
+try:
+    style_dir = Path(STYLE_PATH).parent
+except NameError:
+    raise RuntimeError("STYLE_PATH not defined. Run via load_style() from style_loader.")
+css_path = style_dir / "custom.css"
+
+if css_path.exists():
+    try:
+        css = css_path.read_text(encoding='utf-8')
+        display(HTML(f"<style>{css}</style>"))
+        print(f"Injected custom CSS from: {css_path}")
+    except UnicodeDecodeError as e:
+        print(f"Failed to read CSS due to encoding error: {e}")
 else:
-    print(f"⚠️  custom.css not found at: {css_path}; skipping CSS injection.")
+    print(f"custom.css not found at: {css_path}; skipping CSS injection.")
