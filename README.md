@@ -8,7 +8,9 @@ The project integrates robust data analytics, machine learning modeling, and adv
   <img src="images/plant_disease.gif" alt="Climate Impact Animation" width="1000"/>
 </p>
 
+## Table of Contents
 - [🍃 ClimaCrop Health: Plant Disease \& Climate Impact Analysis](#-climacrop-health-plant-disease--climate-impact-analysis)
+  - [Table of Contents](#table-of-contents)
   - [Dataset Content](#dataset-content)
   - [Project Objectives](#project-objectives)
   - [Business Requirements](#business-requirements)
@@ -75,7 +77,7 @@ A GitHub Project board is established to manage the agile development of this ca
 **GitHub Project Board:** [ClimaCrop Kanban Project](https://github.com/users/banerjixplores/projects/6/views/1)
 
 **Sprint Snapshot (Sprint 1):**  
-![Sprint 1 Overview](../images/Kanban_sprint_1.png)
+![Sprint 1 Overview](images\Kanban_sprint_1.png)
 
 **Sprint Breakdown & Detailed Tasks**
 
