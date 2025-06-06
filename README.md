@@ -300,9 +300,7 @@ pandas, numpy, seaborn, plotly, matplotlib, scikit-learn, joblib, streamlit
 | ---------------------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
 | 00\_data\_load\_and\_inspect.ipynb | `data/raw/merged_climate_disease_final.csv`, Python packages (Pandas, NumPy, etc.) | DataFrame inspection, initial distribution plots, optional `raw_inspected.csv` |
 | 01\_etl\_preprocessing.ipynb       | `data/raw/merged_climate_disease_final.csv` (or `raw_inspected.csv`)               | `data/processed/cleaned_climate_disease.csv`, engineered features              |
-| 02\_eda.ipynb                      | `data/processed/cleaned_climate_disease.csv`                                       | EDA visuals and summary tables (in-notebook)                                   |
-| 03\_modeling\_workflow\.ipynb      | `data/processed/cleaned_climate_disease.csv`                                       | Trained model files (saved in `/models`), performance metrics                  |
-| …                                  | …                                                                                  | …                                                                              |
+…                                                                             |
 
 
 
