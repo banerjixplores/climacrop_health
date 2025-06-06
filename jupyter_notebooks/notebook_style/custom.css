@@ -1,0 +1,319 @@
+/* my_plant_disease_repo/notebook_style/custom.css */
+
+/* ===========================================================
+   A) General page background and font (Dark Mode)
+   =========================================================== */
+/* Entire notebook page background and text color */
+body,
+.container,
+.jp-Notebook {
+  background-color: #2e3440;    /* Dark navy-gray */
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #d8dee9;               /* Off-white text */
+}
+
+/* ===========================================================
+   B) Markdown-cell container (Dark cards)
+   =========================================================== */
+/* Classic Notebook: any rendered Markdown cell */
+div.rendered_html {
+  background-color: #3b4252;    /* Dark slate */
+  color: #d8dee9;               /* Off-white text */
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+/* JupyterLab: markdown cell inner container */
+.jp-Notebook-panel .jp-MarkdownCell .jp-Cell-inner {
+  background-color: #3b4252 !important;
+  color: #d8dee9 !important;
+  padding: 0.75rem 1rem !important;
+  border-radius: 4px !important;
+  margin-bottom: 1rem !important;
+}
+
+/* ===========================================================
+   C) Code cells & output areas (Dark gray)
+   =========================================================== */
+/* Classic Notebook: code-cell input area */
+div.code_cell .input_area {
+  background-color: #434c5e;    /* Darker slate */
+  color: #d8dee9;
+  border-radius: 4px;
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Classic Notebook: output area */
+div.output_wrapper,
+div.output_area {
+  background-color: #434c5e;    /* Same as code cells */
+  color: #d8dee9;
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 1rem;
+}
+
+/* JupyterLab: code cell inner input area */
+.jp-Notebook-panel .jp-CodeCell .jp-Cell-inner {
+  background-color: #434c5e !important;
+  color: #d8dee9 !important;
+  border-radius: 4px !important;
+  padding: 0.75rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+/* JupyterLab: output area */
+.jp-Notebook-panel .jp-OutputArea-child {
+  background-color: #434c5e !important;
+  color: #d8dee9 !important;
+  border-radius: 4px !important;
+  padding: 0.5rem 0.75rem !important;
+  margin-bottom: 1rem !important;
+}
+
+/* Prompt text (In [ ]:) */
+/* Classic Notebook */
+div.code_cell .input_prompt {
+  color: #5e81ac;               /* Muted blue */
+}
+/* JupyterLab */
+.jp-Notebook-panel .jp-CodeCell .jp-InputPrompt {
+  color: #5e81ac !important;
+}
+
+/* ===========================================================
+   D) H1, H2, H3, H4 styling (in Markdown cells)
+   =========================================================== */
+/* H1: Main title (24px, bold, muted-green background, white text) */
+/* Classic Notebook */
+div.rendered_html h1 {
+  font-size: 24px;
+  color: #ffffff !important;
+  background-color: #4E9A06;    /* Muted, colorblind-friendly green */
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+/* JupyterLab */
+.jp-Notebook-panel .jp-RenderedHTMLCommon h1 {
+  font-size: 24px !important;
+  color: #ffffff !important;
+  background-color: #4E9A06 !important;
+  padding: 10px 15px !important;
+  border-radius: 5px !important;
+  margin-top: 0.75rem !important;
+  margin-bottom: 0.75rem !important;
+  text-align: center !important;
+}
+
+/* H2: Section headers (20px, muted-green text) */
+/* Classic Notebook */
+div.rendered_html h2 {
+  font-size: 20px;
+  color: #4E9A06;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+/* JupyterLab */
+.jp-Notebook-panel .jp-RenderedHTMLCommon h2 {
+  font-size: 20px !important;
+  color: #4E9A06 !important;
+  margin-top: 1rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+/* H3: Sub‐section (16px, darker muted-green) */
+/* Classic Notebook */
+div.rendered_html h3 {
+  font-size: 16px;
+  color: #3E7A05; /* Slightly darker shade */
+  margin-top: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+/* JupyterLab */
+.jp-Notebook-panel .jp-RenderedHTMLCommon h3 {
+  font-size: 16px !important;
+  color: #3E7A05 !important;
+  margin-top: 0.75rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+/* H4: Smaller headings (14px, darker muted-green) */
+/* Classic Notebook */
+div.rendered_html h4 {
+  font-size: 14px;
+  color: #3E7A05;
+  margin-top: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+/* JupyterLab */
+.jp-Notebook-panel .jp-RenderedHTMLCommon h4,
+.jp-Notebook-panel .jp-RenderedHTMLCommon h5 {
+  font-size: 14px !important;
+  color: #3E7A05 !important;
+  margin-top: 0.5rem !important;
+  margin-bottom: 0.25rem !important;
+}
+
+/* ===========================================================
+   E) “Call-out” boxes (e.g. hypothesis blocks)
+   =========================================================== */
+/* Classic Notebook */
+div.rendered_html div {
+  background-color: #4c566a;    /* Slightly lighter than code cell */
+  border: 1px solid #616e88;    /* Muted border */
+  color: #d8dee9;
+  padding: 12px 15px;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+/* JupyterLab: any <div> inside rendered markdown */
+.jp-Notebook-panel .jp-RenderedHTMLCommon div {
+  background-color: #4c566a !important;
+  border: 1px solid #616e88 !important;
+  color: #d8dee9 !important;
+  padding: 12px 15px !important;
+  border-radius: 5px !important;
+  margin-bottom: 1rem !important;
+}
+
+/* ===========================================================
+   F) Tables (in Markdown cells)
+   =========================================================== */
+/* Classic Notebook */
+div.rendered_html table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 1rem;
+  background-color: #3b4252;    /* Match markdown cell background */
+  color: #d8dee9;
+}
+div.rendered_html table,
+div.rendered_html th,
+div.rendered_html td {
+  border: 1px solid #616e88;    /* Muted border */
+  padding: 6px 8px;
+  text-align: left;
+}
+div.rendered_html th {
+  background-color: #4c566a;    /* Slightly lighter header */
+  font-weight: bold;
+}
+div.rendered_html tr:nth-child(even) {
+  background-color: #434c5e;    /* Alternate row shading */
+}
+
+/* JupyterLab */
+.jp-Notebook-panel .jp-RenderedHTMLCommon table {
+  border-collapse: collapse !important;
+  width: 100% !important;
+  margin-bottom: 1rem !important;
+  background-color: #3b4252 !important;
+  color: #d8dee9 !important;
+}
+.jp-Notebook-panel .jp-RenderedHTMLCommon table,
+.jp-Notebook-panel .jp-RenderedHTMLCommon th,
+.jp-Notebook-panel .jp-RenderedHTMLCommon td {
+  border: 1px solid #616e88 !important;
+  padding: 6px 8px !important;
+  text-align: left !important;
+}
+.jp-Notebook-panel .jp-RenderedHTMLCommon th {
+  background-color: #4c566a !important;
+  font-weight: bold !important;
+}
+.jp-Notebook-panel .jp-RenderedHTMLCommon tr:nth-child(even) {
+  background-color: #434c5e !important;
+}
+
+/* ===========================================================
+   G) Lists (in Markdown cells)
+   =========================================================== */
+/* Classic Notebook */
+div.rendered_html ul,
+div.rendered_html ol {
+  margin-left: 20px;
+  margin-bottom: 1rem;
+}
+div.rendered_html li {
+  line-height: 1.5;
+  margin-bottom: 0.25rem;
+}
+
+/* JupyterLab */
+.jp-Notebook-panel .jp-RenderedHTMLCommon ul,
+.jp-Notebook-panel .jp-RenderedHTMLCommon ol {
+  margin-left: 20px !important;
+  margin-bottom: 1rem !important;
+}
+.jp-Notebook-panel .jp-RenderedHTMLCommon li {
+  line-height: 1.5 !important;
+  margin-bottom: 0.25rem !important;
+}
+
+/* ===========================================================
+   H) Code blocks & inline code (in Markdown cells)
+   =========================================================== */
+/* Classic Notebook */
+/* Multi-line (``` … ```) code blocks */
+div.rendered_html pre > code {
+  background-color: #434c5e;    /* Dark slate code background */
+  border: 1px solid #616e88;    /* Muted border */
+  padding: 6px 8px;
+  border-radius: 4px;
+  font-size: 13px;
+  line-height: 1.3;
+  color: #d8dee9;
+}
+/* Inline code (backticks) */
+div.rendered_html code {
+  background-color: #434c5e;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-size: 13px;
+  color: #d8dee9;
+}
+
+/* JupyterLab */
+/* Multi-line (``` … ```) code blocks inside rendered markdown */
+.jp-Notebook-panel .jp-RenderedHTMLCommon pre > code {
+  background-color: #434c5e !important;
+  border: 1px solid #616e88 !important;
+  padding: 6px 8px !important;
+  border-radius: 4px !important;
+  font-size: 13px !important;
+  line-height: 1.3 !important;
+  color: #d8dee9 !important;
+}
+/* Inline code (backticks) */
+.jp-Notebook-panel .jp-RenderedHTMLCommon code {
+  background-color: #434c5e !important;
+  padding: 2px 4px !important;
+  border-radius: 3px !important;
+  font-size: 13px !important;
+  color: #d8dee9 !important;
+}
+
+/* ===========================================================
+   I) Links (in Markdown cells)
+   =========================================================== */
+/* Classic Notebook */
+div.rendered_html a {
+  color: #88c0d0;                /* Light blue */
+  text-decoration: none;
+}
+div.rendered_html a:hover {
+  text-decoration: underline;
+}
+
+/* JupyterLab */
+.jp-Notebook-panel .jp-RenderedHTMLCommon a {
+  color: #88c0d0 !important;
+  text-decoration: none !important;
+}
+.jp-Notebook-panel .jp-RenderedHTMLCommon a:hover {
+  text-decoration: underline !important;
+}

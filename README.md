@@ -76,8 +76,8 @@ A GitHub Project board is established to manage the agile development of this ca
 
 **GitHub Project Board:** [ClimaCrop Kanban Project](https://github.com/users/banerjixplores/projects/6/views/1)
 
-**Sprint Snapshot (Sprint 1):**  
-<img src="images/Kanban_sprint_1.png" alt="Sprint 1 Overview" width="50%" style="float: left; margin-right: 10px;" />
+**Sprint 1 - Day 1:**  
+<img src="images/Kanban_sprint_1.png" alt="Sprint 1 Overview" width="100%" style="float: left; margin-right: 10px;" />
 
 **Sprint Breakdown & Detailed Tasks**
 
