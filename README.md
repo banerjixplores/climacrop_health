@@ -1,34 +1,204 @@
-# Project XYZ
+# 🍃 ClimaCrop Health: Plant Disease & Climate Impact Analysis
 
-**Project XYZ** is a comprehensive data analysis tool designed to streamline data exploration, analysis, and visualisation. The tool supports multiple data formats and provides an intuitive interface for both novice and expert data scientists.
+**ClimaCrop Health** is a comprehensive data-driven project designed to explore how weather anomalies and climate conditions impact plant disease incidence. Building on research from Kirk et al. (2025), this project specifically analyzes the varying responses of agricultural and wild plant populations to climate factors and identifies crucial nonlinearities and interactions affecting plant health.
 
-# ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+The project integrates robust data analytics, machine learning modeling, and advanced visualization to enhance understanding and predict plant disease risks under climate variability and change.
+
+<p align="center">
+  <img src="images/plant_disease.gif" alt="Climate Impact Animation" width="1000"/>
+</p>
+
+- [🍃 ClimaCrop Health: Plant Disease \& Climate Impact Analysis](#-climacrop-health-plant-disease--climate-impact-analysis)
+  - [Dataset Content](#dataset-content)
+  - [Project Objectives](#project-objectives)
+  - [Business Requirements](#business-requirements)
+  - [Hypothesis and how to validate?](#hypothesis-and-how-to-validate)
+  - [Project Plan](#project-plan)
+  - [The rationale to map the business requirements to the Data Visualisations](#the-rationale-to-map-the-business-requirements-to-the-data-visualisations)
+  - [Analysis techniques used](#analysis-techniques-used)
+  - [Ethical considerations](#ethical-considerations)
+  - [Dashboard Design](#dashboard-design)
+  - [Unfixed Bugs](#unfixed-bugs)
+  - [Development Roadmap](#development-roadmap)
+  - [Deployment](#deployment)
+    - [Heroku](#heroku)
+  - [Main Data Analysis Libraries](#main-data-analysis-libraries)
+  - [Credits](#credits)
+    - [Content](#content)
+    - [Media](#media)
+  - [Acknowledgements](#acknowledgements)
 
 
 ## Dataset Content
-* Describe your dataset. Choose a dataset of reasonable size to avoid exceeding the repository's maximum size of 100Gb.
+
+- The dataset includes **5,906 observations** of plant–disease systems from over 4,300 global studies.
+- Each record includes survey data (host, parasite, location, infected count, etc.) and associated climate metrics (e.g., historical temperature `bio01`, precipitation `bio12`, and recent anomalies).
+- Dataset source: [Dryad Repository – DOI 10.5061/dryad.p8cz8wb0h](https://doi.org/10.5061/dryad.p8cz8wb0h)
+
+## Project Objectives
+
+- Predict and classify disease incidence based on climate inputs
+- Identify which climate metrics (historic vs. anomalous) drive disease prevalence
+- Compare sensitivity between natural and agricultural systems
+- Deploy an interactive Streamlit dashboard for risk visualization and scenario testing
+- Ensure the approach is explainable and reproducible for real-world use
 
 
 ## Business Requirements
-* Describe your business requirements
+
+- **Enable risk forecasting** based on temperature and rainfall inputs.
+- **Provide incidence classification** across zones for easy interpretability.
+- **Highlight hotspots** on a global scale to prioritize surveillance.
+- **Facilitate exploratory scenario simulation** for stakeholders via an interactive interface.
 
 
 ## Hypothesis and how to validate?
-* List here your project hypothesis(es) and how you envision validating it (them) 
+
+- **Hypothesis 1: Weather, Anomaly & Historical Climate Effects**: Contemporaneous weather (mean temperature or precipitation during a survey), deviations from monthly normals (“anomalies”), and long-term historical climate each independently influence plant-disease prevalence.
+- **Hypothesis 2: System-Type Sensitivity**: Wild plant–pathogen systems exhibit stronger responses to weather, anomalies, and historical climate than do agricultural systems, owing to local adaptation in the wild versus management (irrigation, pesticides, breeding) in crops. 
+- **Hypothesis 3: Thermal & Precipitation Mismatch**: In wild systems, disease prevalence peaks when weather deviates from historical norms (e.g., unusually warm in a cool climate or vice versa)—a “mismatch” effect. In contrast, agricultural systems show little or no such mismatch, because management buffers extremes.
+- **Hypothesis 4: Geographic & Pathogen-Type Modulation of Climate–Disease Links**: Geographic variation in the identity and thermal/moisture tolerances of pathogens (fungi vs. bacteria vs. viruses vs. nematodes, etc.) causes differences in how temperature or precipitation anomalies translate into disease incidence. Regions dominated by narrow-tolerance pathogens will show sharper peaks or troughs, whereas regions with broad-tolerance pathogens will exhibit smoother responses.
+- **Hypothesis 5: Transmission-Mode Sensitivity to Anomalies**: Pathogens spread by vectors (insects or mites) will exhibit stronger sensitivity to precipitation anomalies (e.g., drought or heavy rain) than directly transmitted (e.g., soil-borne or contact) pathogens, because vector activity and life cycles respond acutely to moisture conditions.
+
+Validation Strategy:
+- Correlation analysis between `incidence` and climate metrics.
+- Comparison of means using visual plots (e.g., KDE, boxplot) across system types.
+- Stratified accuracy testing using Random Forest classifiers.
 
 ## Project Plan
 * Outline the high-level steps taken for the analysis.
 * How was the data managed throughout the collection, processing, analysis and interpretation steps?
 * Why did you choose the research methodologies you used?
 
+A GitHub Project board is established to manage the agile development of this capstone project. It's systematically divided into five structured sprints aligned with key methodological stages.
+
+**GitHub Project Board:** [ClimaCrop Kanban Project](https://github.com/users/banerjixplores/projects/6/views/1)
+
+**Sprint Snapshot (Sprint 1):**  
+![Sprint 1 Overview](../images/Kanban_sprint_1.png)
+
+**Sprint Breakdown & Detailed Tasks**
+
+**Sprint 1: Data Acquisition, Inspection & Preprocessing**
+
+**1.1 Data Acquisition**
+- Load and examine the `merged_climate_disease_final.csv` dataset (Dryad/Kirk et al. 2025).
+- Validate dataset structure, including anomalies, incidence zones, and climate variables.
+- Document data provenance and initial understanding context.
+
+**1.2 Data Quality Checks**
+- Detect and manage duplicated entries.
+- Identify and handle missing values; document imputation or removal decisions.
+- Validate column encodings against Kirk et al.’s original dataset features.
+
+**1.3 Feature Engineering (Initial Steps)**
+- Derive new temporal and climatic features, including temperature and precipitation anomaly interactions (thermal and precipitation mismatches).
+- Normalize and encode categorical variables (`host_type`, `habitat`).
+- Save preprocessed dataset to `data/processed/`.
+
+
+**Sprint 2: Exploratory Data Analysis & Hypothesis Validation**
+
+**2.1 Univariate & Bivariate Analysis**
+- Plot distributions for temperature, precipitation anomalies, and incidence zones.
+- Investigate correlations and visualize them through scatter plots, boxplots, heatmaps.
+
+**2.2 Hypothesis-Driven Statistical Testing**
+Evaluate Kirk et al.’s hypotheses:
+- Wild vs. agricultural systems’ response to climatic anomalies.
+- Thermal and precipitation mismatch effects.
+- Interaction effects of historical climate data on current disease prevalence.
+
+**Conduct statistical tests:**
+- ANOVA
+- Chi-square
+- Interaction term analysis
+
+**2.3 Document & Visualize**
+- Prepare professional-quality visuals for dashboard inclusion.
+- Summarize EDA findings clearly for subsequent modeling steps.
+
+
+**Sprint 3: Predictive Modeling & Evaluation**
+
+**3.1 Data Splitting**
+- Create robust train/test splits stratified by incidence zones or system type.
+
+**3.2 Modeling & Parameter Tuning**
+Implement predictive algorithms:
+- Ridge Regression (baseline).
+- Random Forest (interpretable non-linear model).
+- XGBoost (optimized gradient boosting).
+
+- Conduct hyperparameter tuning using GridSearchCV.
+
+**3.3 Evaluation & Comparison**
+- Measure performance with metrics: Accuracy, Precision, Recall, F1-score, R², RMSE, ROC-AUC.
+- Analyze results separately for agricultural vs. wild systems.
+- Save best-performing models and evaluation metrics.
+
+
+**Sprint 4: Explainability & Interactive Dashboard Development**
+
+**4.1 Model Explainability**
+- Generate Permutation Importance plots.
+- Create Partial Dependence Plots (PDP) to elucidate feature influences.
+
+**4.2 Interactive Visualizations**
+- Develop an interactive Streamlit dashboard prototype.
+- Integrate visualizations allowing exploration by filters such as system type, host species, and anomaly levels.
+
+**4.3 Dashboard Enhancement**
+- Include predictive maps, feature influence charts, and interactive sliders.
+- Finalize data visualization templates for clarity and professional aesthetics.
+
+
+**Sprint 5: Reporting, Documentation, and Final Delivery**
+
+**5.1 Documentation**
+- Polish final README.md for clarity, professionalism, and completeness.
+- Write comprehensive yet accessible technical and lay summaries.
+
+**5.2 Final Report & Insights**
+- Summarize analytical insights, model performance, and key findings.
+- Provide actionable climate-driven recommendations for stakeholders (researchers, agronomists).
+
+**5.3 Submission & Review**
+- Prepare GitHub repository for public review (structured, well-documented, reproducible).
+- Record optional walkthrough for stakeholders.
+- Tag and release final GitHub repository version (`v1.0-climacrop-capstone`).
+
+
+**Ethical & Scientific Considerations**
+
+**Transparency & Reproducibility**
+- Fully document all analytical decisions for transparency.
+- Provide clear and comprehensive notes within notebooks and markdown files.
+
+**Bias Mitigation**
+- Identify and acknowledge potential geographical biases and system-type coverage discrepancies.
+- Include clear discussions on how these biases were mitigated through analysis and interpretation strategies.
+
+**Data Privacy & Compliance**
+- Confirm the dataset does not contain identifiable sensitive information (compliant with ethical standards).
+
+
 ## The rationale to map the business requirements to the Data Visualisations
 * List your business requirements and a rationale to map them to the Data Visualisations
 
 ## Analysis techniques used
-* List the data analysis methods used and explain limitations or alternative approaches.
-* How did you structure the data analysis techniques. Justify your response.
-* Did the data limit you, and did you use an alternative approach to meet these challenges?
-* How did you use generative AI tools to help with ideation, design thinking and code optimisation?
+
+- **Data Cleaning**: `pandas`, `numpy`
+- **EDA**: `seaborn`, `plotly`, `matplotlib`
+- **Modeling**: `sklearn` (RandomForestClassifier, RandomForestRegressor)
+- **Explainability**: SHAP (planned)
+
+**Limitations**:
+- Spatial resolution is ~10km, which may obscure local variability.
+- Missing metadata for some studies.
+
+**Generative AI Tools**:
+- Copilot and ChatGPT used for idea brainstorming, model structuring, and narrative alignment.
 
 ## Ethical considerations
 * Were there any data privacy, bias or fairness issues with the data?
@@ -49,6 +219,15 @@
 * What challenges did you face, and what strategies were used to overcome these challenges?
 * What new skills or tools do you plan to learn next based on your project experience? 
 
+| Phase | Description |
+|-------|-------------|
+| Data Understanding | Clean, merge, validate, and profile datasets |
+| Feature Engineering | Engineer `incidence_zone`, climate anomalies, study metadata |
+| Modeling | Train classification & regression models; validate performance |
+| Dashboard | Build Streamlit app with sliders, KPI cards, and prediction interface |
+| Explainability | Use SHAP to visualize feature importance |
+| Deployment & Docs | Finalize README, deploy dashboard, and document pipeline
+
 ## Deployment
 ### Heroku
 
@@ -67,6 +246,9 @@
 ## Main Data Analysis Libraries
 * Here you should list the libraries you used in the project and provide an example(s) of how you used these libraries.
 
+```bash
+pandas, numpy, seaborn, plotly, matplotlib, scikit-learn, joblib, streamlit
+```
 
 ## Credits 
 
@@ -75,9 +257,9 @@
 
 ### Content 
 
-- The text for the Home page was taken from Wikipedia Article A
-- Instructions on how to implement form validation on the Sign-Up page was taken from [Specific YouTube Tutorial](https://www.youtube.com/)
-- The icons in the footer were taken from [Font Awesome](https://fontawesome.com/)
+- Primary dataset and paper: Kirk et al. (2024), Ecology Letters
+- Data source: [https://datadryad.org/stash/dataset/doi:10.5061/dryad.p8cz8wb0h](https://datadryad.org/stash/dataset/doi:10.5061/dryad.p8cz8wb0h)
+- Method inspiration: Code Institute bootcamp resources
 
 ### Media
 
@@ -86,5 +268,10 @@
 
 
 
-## Acknowledgements (optional)
-* Thank the people who provided support through this project.
+## Acknowledgements 
+- Mentors and reviewers at Code Institute
+- Code Institute Slack peer feedback group
+
+<p align="center">
+  <img src="images/plant_health_logo.jpg" alt="Plant Health Footer Logo" width="120"/>
+</p>
