@@ -12,6 +12,7 @@ The project integrates robust data analytics, machine learning modeling, and adv
 - [🍃 ClimaCrop Health: Plant Disease \& Climate Impact Analysis](#-climacrop-health-plant-disease--climate-impact-analysis)
   - [Table of Contents](#table-of-contents)
   - [Dataset Content](#dataset-content)
+  - [Getting Started](#getting-started)
   - [Project Objectives](#project-objectives)
   - [Business Requirements](#business-requirements)
   - [Hypothesis and how to validate?](#hypothesis-and-how-to-validate)
@@ -25,17 +26,55 @@ The project integrates robust data analytics, machine learning modeling, and adv
   - [Deployment](#deployment)
     - [Heroku](#heroku)
   - [Main Data Analysis Libraries](#main-data-analysis-libraries)
+  - [Notebook contents](#notebook-contents)
   - [Credits](#credits)
     - [Content](#content)
     - [Media](#media)
   - [Acknowledgements](#acknowledgements)
-
 
 ## Dataset Content
 
 - The dataset includes **5,906 observations** of plant–disease systems from over 4,300 global studies.
 - Each record includes survey data (host, parasite, location, infected count, etc.) and associated climate metrics (e.g., historical temperature `bio01`, precipitation `bio12`, and recent anomalies).
 - Dataset source: [Dryad Repository – DOI 10.5061/dryad.p8cz8wb0h](https://doi.org/10.5061/dryad.p8cz8wb0h)
+
+## Getting Started
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/banerjixplores/climacrop_health.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd climacrop_health
+   ```
+3. Create & activate a virtual environment (optional but recommended):
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+   ```
+4. Install the required packages:
+   ```bash      
+   pip install -r requirements.txt
+   ```
+5. Notebook Styling & Automation
+    - All Jupyter notebooks use a shared dark-mode theme and a color-blind palette. When you open any notebook, the 00_notebook_style.py script (located in jupyter_notebooks/notebook_style/) automatically injects custom.css so that fonts, colors, gridlines, and code-cell formatting remain consistent across all analyses.
+    - As soon as you open any notebook, the styling script will inject custom.css so that fonts, colors, and code‐cell borders remain consistent.
+    - Dark-mode CSS: jupyter_notebooks/notebook_style/custom.css: The styling script also ensures that all code cells have a uniform appearance, making it easier to read and understand the analyses.
+    - Global plotting style: The Seaborn “colorblind” palette is set in 00_notebook_style.py, with two predefined colors:
+      - WILD_COLOR (greenish-teal) for natural (wild) populations
+      - AG_COLOR (navy-blue) for agricultural populations
+
+6. Notebook execution:
+   - Open Jupyter Notebook or your preferred IDE.
+   - Run the notebooks in sequence starting from `00_data_load_and_inspect.ipynb` to ensure data is loaded and processed correctly.
+     - jupyter_notebooks/00_data_load_and_inspect.ipynb
+     - jupyter_notebooks/01_etl_preprocessing.ipynb
+     - jupyter_notebooks/02_eda.ipynb
+     - ... continue with the remaining notebooks in order.
+7. Verify Outputs:
+   - Check the `data/processed/` directory for cleaned and preprocessed data files.
+   - Review generated visualizations in the EDA notebook.
+   - 
 
 ## Project Objectives
 
@@ -77,7 +116,10 @@ A GitHub Project board is established to manage the agile development of this ca
 **GitHub Project Board:** [ClimaCrop Kanban Project](https://github.com/users/banerjixplores/projects/6/views/1)
 
 **Sprint 1 - Day 1:**  
-<img src="images/Kanban_sprint_1.png" alt="Sprint 1 Overview" width="100%" style="float: left; margin-right: 10px;" />
+<img src="images/Kanban_sprint_1_init.png" alt="Sprint 1 Start" width="45%" style="float: left; margin-right: 5%;" />
+<img src="images/Kanban_sprint_1_end.png"  alt="Sprint 1 End"   width="45%" style="float: right; margin-left: 5%;" />
+<div style="clear: both;"></div>
+
 
 **Sprint Breakdown & Detailed Tasks**
 
@@ -251,6 +293,18 @@ Implement predictive algorithms:
 ```bash
 pandas, numpy, seaborn, plotly, matplotlib, scikit-learn, joblib, streamlit
 ```
+
+
+## Notebook contents
+| Notebook                           | Inputs                                                                             | Outputs                                                                        |
+| ---------------------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| 00\_data\_load\_and\_inspect.ipynb | `data/raw/merged_climate_disease_final.csv`, Python packages (Pandas, NumPy, etc.) | DataFrame inspection, initial distribution plots, optional `raw_inspected.csv` |
+| 01\_etl\_preprocessing.ipynb       | `data/raw/merged_climate_disease_final.csv` (or `raw_inspected.csv`)               | `data/processed/cleaned_climate_disease.csv`, engineered features              |
+| 02\_eda.ipynb                      | `data/processed/cleaned_climate_disease.csv`                                       | EDA visuals and summary tables (in-notebook)                                   |
+| 03\_modeling\_workflow\.ipynb      | `data/processed/cleaned_climate_disease.csv`                                       | Trained model files (saved in `/models`), performance metrics                  |
+| …                                  | …                                                                                  | …                                                                              |
+
+
 
 ## Credits 
 
