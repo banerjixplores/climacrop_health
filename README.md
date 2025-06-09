@@ -15,6 +15,12 @@ The project integrates robust data analytics, machine learning modeling, and adv
   - [Project Objectives](#project-objectives)
   - [Business Requirements](#business-requirements)
   - [Hypothesis and how to validate?](#hypothesis-and-how-to-validate)
+    - [**Hypothesis 1: Weather, Anomaly \& Historical Climate Effects**](#hypothesis-1-weather-anomaly--historical-climate-effects)
+    - [**Hypothesis 1 validation**](#hypothesis-1-validation)
+    - [**Hypothesis 2: System-Type Sensitivity**](#hypothesis-2-system-type-sensitivity)
+    - [**Hypothesis 2 validation**](#hypothesis-2-validation)
+    - [**Hypothesis 3: Thermal \& Precipitation Mismatch**](#hypothesis-3-thermal--precipitation-mismatch)
+    - [**Hypothesis 3 validation**](#hypothesis-3-validation)
       - [1. Data \& Anomalies](#1-data--anomalies)
       - [2. Statistical Approach](#2-statistical-approach)
         - [Temperature](#temperature)
@@ -99,10 +105,10 @@ The project integrates robust data analytics, machine learning modeling, and adv
 
 ## Hypothesis and how to validate?
 
-- ### **Hypothesis 1: Weather, Anomaly & Historical Climate Effects**  
+### **Hypothesis 1: Weather, Anomaly & Historical Climate Effects**  
   Contemporaneous weather (mean temperature or precipitation during a survey), deviations from monthly normals (“anomalies”), and long-term historical climate each independently influence plant-disease prevalence.
 
-- ### **Hypothesis 1 validation**
+### **Hypothesis 1 validation**
 
 **Weather (contemporaneous), anomalies, and historical climate each influence disease prevalence.**
 
@@ -142,9 +148,10 @@ Conclusion:
 
 ---
 
-- ### **Hypothesis 2: System-Type Sensitivity**
+### **Hypothesis 2: System-Type Sensitivity**
   Wild plant–pathogen systems exhibit stronger responses to weather, anomalies, and historical climate than do agricultural systems, owing to local adaptation in the wild versus management (irrigation, pesticides, breeding) in crops.
-- ### **Hypothesis 2 validation**
+
+### **Hypothesis 2 validation**
 
 | System | Metric             | Temp Wild R² | Temp Ag R² | Rain Wild R² | Rain Ag R² | Wild > Ag? |
 | ------ | ------------------ | ------------ | ---------- | ------------ | ---------- | ---------- |
@@ -172,10 +179,10 @@ Conclusion:
 
 ---
 
-- ### **Hypothesis 3: Thermal & Precipitation Mismatch** 
+### **Hypothesis 3: Thermal & Precipitation Mismatch** 
   In wild systems, disease prevalence peaks when weather deviates from historical norms (e.g., unusually warm in a cool climate or vice versa)—a “mismatch” effect. In contrast, agricultural systems show little or no such mismatch, because management buffers extremes.
 
-- ### **Hypothesis 3 validation**
+### **Hypothesis 3 validation**
 We tested Hypothesis 3: Thermal & Precipitation Mismatch by fitting OLS models with interaction terms between anomaly and historical climate for both wild and agricultural systems.
 
 #### 1. Data & Anomalies
