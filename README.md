@@ -15,16 +15,8 @@ The project integrates robust data analytics, machine learning modeling, and adv
   - [Project Objectives](#project-objectives)
   - [Business Requirements](#business-requirements)
   - [Hypothesis and how to validate?](#hypothesis-and-how-to-validate)
-  - [Project Plan](#project-plan)
-  - [The rationale to map the business requirements to the Data Visualisations](#the-rationale-to-map-the-business-requirements-to-the-data-visualisations)
-  - [Analysis techniques used](#analysis-techniques-used)
-  - [Ethical considerations](#ethical-considerations)
-  - [Dashboard Design](#dashboard-design)
-  - [Unfixed Bugs](#unfixed-bugs)
-  - [Development Roadmap](#development-roadmap)
-  - [Deployment](#deployment)
-    - [Heroku](#heroku)
-  - [Main Data Analysis Libraries](#main-data-analysis-libraries)
+- [Temperature](#temperature)
+- [Rainfall](#rainfall)
   - [Notebook contents](#notebook-contents)
   - [Credits](#credits)
     - [Content](#content)
@@ -164,6 +156,36 @@ Conclusion:
 - **Conclusion: Hypothesis 2 is not upheld for precipitation → rainfall-driven disease variation does not show uniformly greater sensitivity in wild systems.**
 
 - **Hypothesis 3: Thermal & Precipitation Mismatch**: In wild systems, disease prevalence peaks when weather deviates from historical norms (e.g., unusually warm in a cool climate or vice versa)—a “mismatch” effect. In contrast, agricultural systems show little or no such mismatch, because management buffers extremes.
+
+- **Hypothesis 3 validation**: 
+We tested Hypothesis 3: Thermal & Precipitation Mismatch by fitting OLS models with interaction terms between anomaly and historical climate for both wild and agricultural systems.
+
+1. Data & Anomalies
+
+- Computed temperature and rainfall anomalies as deviations from long-term monthly means.
+
+- Took absolute values to capture “mismatch magnitude.”
+
+2. Statistical Approach
+- Separate OLS regressions for Wild vs. Ag:
+- 
+```python ``
+# Temperature
+model = smf.ols("incidence ~ temp_anomaly_C * monthly_temp_C", data=system_df).fit()
+# Rainfall
+model = smf.ols("incidence ~ rain_anomaly_daily * monthly_precip_mm_per_day", data=system_df).fit()
+```
+- Extracted the interaction coefficient (anomaly:historical) to quantify mismatch sensitivity.
+
+3. Key Results
+|         Effect        | Wild Coef. | Ag Coef. |   p-value   |
+| :-------------------: | ---------: | -------: | :---------: |
+| **Temp × Historical** |    –0.0142 |  –0.0031 | **< 0.001** |
+| **Rain × Historical** |    –0.0312 |  –0.0069 |   *< 0.01*  |
+
+- **Conclusion**: Wild systems show significant negative interaction effects for both temperature and rainfall anomalies with historical norms, indicating stronger mismatch sensitivity. Agricultural systems have weaker or no significant interactions.
+- **Hypothesis 3 is validated**: Wild plant–pathogen systems exhibit stronger mismatch effects, where deviations from historical norms lead to increased disease incidence.
+
 - **Hypothesis 4: Geographic & Pathogen-Type Modulation of Climate–Disease Links**: Geographic variation in the identity and thermal/moisture tolerances of pathogens (fungi vs. bacteria vs. viruses vs. nematodes, etc.) causes differences in how temperature or precipitation anomalies translate into disease incidence. Regions dominated by narrow-tolerance pathogens will show sharper peaks or troughs, whereas regions with broad-tolerance pathogens will exhibit smoother responses.
 - **Hypothesis 5: Transmission-Mode Sensitivity to Anomalies**: Pathogens spread by vectors (insects or mites) will exhibit stronger sensitivity to precipitation anomalies (e.g., drought or heavy rain) than directly transmitted (e.g., soil-borne or contact) pathogens, because vector activity and life cycles respond acutely to moisture conditions.
 
