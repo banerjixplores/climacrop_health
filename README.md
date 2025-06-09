@@ -211,13 +211,14 @@ print(model.summary())
 - Extracted the interaction coefficient (anomaly:historical) to quantify mismatch sensitivity.
 
 3. Key Interaction Coefficients
+   
 |         Effect        | Wild Coef. | Ag Coef. |   p-value   |
 | :-------------------: | ---------: | -------: | :---------: |
 | **Temp × Historical** |    –0.0142 |  –0.0031 | **< 0.001** |
 | **Rain × Historical** |    –0.0312 |  –0.0069 |   *< 0.01*  |
 
-- **Interpretation**: Wild systems show significant negative interaction effects for both temperature and rainfall anomalies with historical norms, indicating stronger mismatch sensitivity. Agricultural systems have weaker or no significant interactions.
-- **Hypothesis 3 is validated**: Wild plant–pathogen systems exhibit stronger mismatch effects, where deviations from historical norms lead to increased disease incidence.
+   - **Interpretation**: Wild systems show significant negative interaction effects for both temperature and rainfall anomalies with historical norms, indicating stronger mismatch sensitivity. Agricultural systems have weaker or no significant interactions.
+   - **Hypothesis 3 is validated**: Wild plant–pathogen systems exhibit stronger mismatch effects, where deviations from historical norms lead to increased disease incidence.
 
 - **Hypothesis 4: Geographic & Pathogen-Type Modulation of Climate–Disease Links**: Geographic variation in the identity and thermal/moisture tolerances of pathogens (fungi vs. bacteria vs. viruses vs. nematodes, etc.) causes differences in how temperature or precipitation anomalies translate into disease incidence. Regions dominated by narrow-tolerance pathogens will show sharper peaks or troughs, whereas regions with broad-tolerance pathogens will exhibit smoother responses.
 - **Hypothesis 5: Transmission-Mode Sensitivity to Anomalies**: Pathogens spread by vectors (insects or mites) will exhibit stronger sensitivity to precipitation anomalies (e.g., drought or heavy rain) than directly transmitted (e.g., soil-borne or contact) pathogens, because vector activity and life cycles respond acutely to moisture conditions.
