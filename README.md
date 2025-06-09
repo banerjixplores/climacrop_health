@@ -8,9 +8,8 @@ The project integrates robust data analytics, machine learning modeling, and adv
   <img src="images/plant_disease.gif" alt="Climate Impact Animation" width="1000"/>
 </p>
 
-## Table of Contents
+**Table of Contents**
 - [🍃 ClimaCrop Health: Plant Disease \& Climate Impact Analysis](#-climacrop-health-plant-disease--climate-impact-analysis)
-  - [Table of Contents](#table-of-contents)
   - [Dataset Content](#dataset-content)
   - [Getting Started](#getting-started)
   - [Project Objectives](#project-objectives)
@@ -34,7 +33,8 @@ The project integrates robust data analytics, machine learning modeling, and adv
 
 ## Dataset Content
 
-- The dataset includes **5,906 observations** of plant–disease systems from over 4,300 global studies.
+- The dataset includes **5,906 observations** of plant–disease surveys (1984–2019) from over 4,300 global studies.
+- Paired with ERA5‐land (monthly) and WorldClim 30-year normals.
 - Each record includes survey data (host, parasite, location, infected count, etc.) and associated climate metrics (e.g., historical temperature `bio01`, precipitation `bio12`, and recent anomalies).
 - Dataset source: [Dryad Repository – DOI 10.5061/dryad.p8cz8wb0h](https://doi.org/10.5061/dryad.p8cz8wb0h)
 
@@ -96,7 +96,40 @@ The project integrates robust data analytics, machine learning modeling, and adv
 ## Hypothesis and how to validate?
 
 - **Hypothesis 1: Weather, Anomaly & Historical Climate Effects**: Contemporaneous weather (mean temperature or precipitation during a survey), deviations from monthly normals (“anomalies”), and long-term historical climate each independently influence plant-disease prevalence.
-- **Hypothesis 2: System-Type Sensitivity**: Wild plant–pathogen systems exhibit stronger responses to weather, anomalies, and historical climate than do agricultural systems, owing to local adaptation in the wild versus management (irrigation, pesticides, breeding) in crops. 
+- **Hypothesis 1 validation**: 
+
+**Weather (contemporaneous), anomalies, and historical climate each influence disease prevalence.**
+
+| Predictor                         | System | R²     | Adj. R² | p(linear) | p(quad) | Interpretation                         |
+| --------------------------------- | ------ | ------ | ------- | --------- | ------- | -------------------------------------- |
+| **Temperature Anomaly**           | Wild   | 0.0687 | 0.0653  | 4.3e-10   | 7.9e-02 | Linear sig., quad not; \~6.9% variance |
+|                                   | Ag     | 0.0071 | 0.0065  | 1.3e-06   | 1.1e-03 | Both terms sig.; \~0.7% variance       |
+| **Contemp. Temperature**          | Wild   | 0.0740 | 0.0706  | 1.6e-09   | 3.7e-10 | Both terms sig.; \~7.4% variance       |
+|                                   | Ag     | 0.0698 | 0.0693  | 4.5e-17   | 3.8e-23 | Both terms sig.; \~7.0% variance       |
+| **Historical Annual Temperature** | Wild   | 0.1153 | 0.1120  | 9.6e-14   | 1.7e-11 | Both terms sig.; \~11.5% variance      |
+|                                   | Ag     | 0.0359 | 0.0353  | 7.2e-21   | 1.1e-24 | Both terms sig.; \~3.6% variance       |
+
+Conclusion:
+
+- All three temperature metrics explain more variance in wild than agricultural systems.
+
+- Nonlinear (quadratic) effects are strongest for contemporaneous & historical temperature in wild systems.
+  
+**Rainfall (anomaly, contemporary, monthly & annual) affects disease more strongly in wild than in agricultural systems.**
+
+| Predictor                          | System | R²     | Adj. R² | p(linear) | p(quad) | Interpretation                         |
+| ---------------------------------- | ------ | ------ | ------- | --------- | ------- | -------------------------------------- |
+| **Rainfall Anomaly**               | Wild   | 0.0134 | 0.0098  | 6.6e-03   | 1.0e-02 | Both terms sig.; \~1.3% variance       |
+|                                    | Ag     | 0.0590 | 0.0585  | 8.5e-02   | 3.8e-06 | Quad sig., linear not; \~5.9% variance |
+| **Contemp. Precipitation (mm/d)**  | Wild   | 0.0365 | 0.0329  | 2.0e-05   | 6.4e-06 | Both terms sig.; \~3.6% variance       |
+|                                    | Ag     | 0.0242 | 0.0237  | 7.5e-07   | 6.8e-02 | Linear sig., quad not; \~2.4% variance |
+| **Monthly Historical Rain (mm/d)** | Wild   | 0.0134 | 0.0098  | 6.7e-03   | 1.0e-02 | Both terms sig.; \~1.3% variance       |
+|                                    | Ag     | 0.0590 | 0.0585  | 8.6e-02   | 3.7e-06 | Quad sig., linear not; \~5.9% variance |
+| **Annual Precipitation (mm/d)**    | Wild   | 0.0089 | 0.0053  | 2.8e-02   | 2.8e-02 | Both terms sig.; \~0.9% variance       |
+|                                    | Ag     | 0.0313 | 0.0307  | 2.9e-04   | 3.9e-08 | Both terms sig.; \~3.1% variance       |
+
+
+- **Hypothesis 2: System-Type Sensitivity**: Wild plant–pathogen systems exhibit stronger responses to weather, anomalies, and historical climate than do agricultural systems, owing to local adaptation in the wild versus management (irrigation, pesticides, breeding) in crops.
 - **Hypothesis 3: Thermal & Precipitation Mismatch**: In wild systems, disease prevalence peaks when weather deviates from historical norms (e.g., unusually warm in a cool climate or vice versa)—a “mismatch” effect. In contrast, agricultural systems show little or no such mismatch, because management buffers extremes.
 - **Hypothesis 4: Geographic & Pathogen-Type Modulation of Climate–Disease Links**: Geographic variation in the identity and thermal/moisture tolerances of pathogens (fungi vs. bacteria vs. viruses vs. nematodes, etc.) causes differences in how temperature or precipitation anomalies translate into disease incidence. Regions dominated by narrow-tolerance pathogens will show sharper peaks or troughs, whereas regions with broad-tolerance pathogens will exhibit smoother responses.
 - **Hypothesis 5: Transmission-Mode Sensitivity to Anomalies**: Pathogens spread by vectors (insects or mites) will exhibit stronger sensitivity to precipitation anomalies (e.g., drought or heavy rain) than directly transmitted (e.g., soil-borne or contact) pathogens, because vector activity and life cycles respond acutely to moisture conditions.
@@ -118,6 +151,8 @@ A GitHub Project board is established to manage the agile development of this ca
 **Sprint 1 - Day 1:**  
 <img src="images/Kanban_sprint_1_init.png" alt="Sprint 1 Start" width="45%" style="float: left; margin-right: 5%;" />
 <img src="images/Kanban_sprint_1_end.png"  alt="Sprint 1 End"   width="45%" style="float: right; margin-left: 5%;" />
+<img src="images/Kanban_sprint_2_init.png" alt="Sprint 2 Start" width="45%" style="float: left; margin-right: 5%;" />
+
 <div style="clear: both;"></div>
 
 
@@ -149,7 +184,7 @@ A GitHub Project board is established to manage the agile development of this ca
 
 **2.2 Hypothesis-Driven Statistical Testing**
 Evaluate Kirk et al.’s hypotheses:
-- Wild vs. agricultural systems’ response to climatic anomalies.
+- Weather & climate predict disease prevalence.
 - Thermal and precipitation mismatch effects.
 - Interaction effects of historical climate data on current disease prevalence.
 
