@@ -112,24 +112,57 @@ The project integrates robust data analytics, machine learning modeling, and adv
 Conclusion:
 
 - All three temperature metrics explain more variance in wild than agricultural systems.
-
-- Nonlinear (quadratic) effects are strongest for contemporaneous & historical temperature in wild systems.
   
 **Rainfall (anomaly, contemporary, monthly & annual) affects disease more strongly in wild than in agricultural systems.**
 
 | Predictor                          | System | R²     | Adj. R² | p(linear) | p(quad) | Interpretation                         |
 | ---------------------------------- | ------ | ------ | ------- | --------- | ------- | -------------------------------------- |
-| **Rainfall Anomaly**               | Wild   | 0.0134 | 0.0098  | 6.6e-03   | 1.0e-02 | Both terms sig.; \~1.3% variance       |
-|                                    | Ag     | 0.0590 | 0.0585  | 8.5e-02   | 3.8e-06 | Quad sig., linear not; \~5.9% variance |
-| **Contemp. Precipitation (mm/d)**  | Wild   | 0.0365 | 0.0329  | 2.0e-05   | 6.4e-06 | Both terms sig.; \~3.6% variance       |
-|                                    | Ag     | 0.0242 | 0.0237  | 7.5e-07   | 6.8e-02 | Linear sig., quad not; \~2.4% variance |
-| **Monthly Historical Rain (mm/d)** | Wild   | 0.0134 | 0.0098  | 6.7e-03   | 1.0e-02 | Both terms sig.; \~1.3% variance       |
-|                                    | Ag     | 0.0590 | 0.0585  | 8.6e-02   | 3.7e-06 | Quad sig., linear not; \~5.9% variance |
-| **Annual Precipitation (mm/d)**    | Wild   | 0.0089 | 0.0053  | 2.8e-02   | 2.8e-02 | Both terms sig.; \~0.9% variance       |
-|                                    | Ag     | 0.0313 | 0.0307  | 2.9e-04   | 3.9e-08 | Both terms sig.; \~3.1% variance       |
+| **Rainfall Anomaly**               | Wild   | 0.0134 | 0.0098  | 6.6e-03   | 1.0e-02 | Both terms significant; \~1.3% variance       |
+|                                    | Ag     | 0.0590 | 0.0585  | 8.5e-02   | 3.8e-06 | Quad significant, linear not; \~5.9% variance |
+| **Contemp. Precipitation (mm/d)**  | Wild   | 0.0365 | 0.0329  | 2.0e-05   | 6.4e-06 | Both terms significant; \~3.6% variance       |
+|                                    | Ag     | 0.0242 | 0.0237  | 7.5e-07   | 6.8e-02 | Linear significant, quad not; \~2.4% variance |
+| **Monthly Historical Rain (mm/d)** | Wild   | 0.0134 | 0.0098  | 6.7e-03   | 1.0e-02 | Both terms significant; \~1.3% variance       |
+|                                    | Ag     | 0.0590 | 0.0585  | 8.6e-02   | 3.7e-06 | Quad significant, linear not; \~5.9% variance |
+| **Annual Precipitation (mm/d)**    | Wild   | 0.0089 | 0.0053  | 2.8e-02   | 2.8e-02 | Both terms significant; \~0.9% variance       |
+|                                    | Ag     | 0.0313 | 0.0307  | 2.9e-04   | 3.9e-08 | Both terms significant; \~3.1% variance       |
 
+Conclusion:
+
+- Only Contemporary Precipitation shows a stronger effect in Wild (R² 0.0365 > 0.0242).
+
+- For Rainfall Anomaly, Monthly Historical, and Annual precipitation, Agricultural explains equal or more variance than Wild.
+
+- Thus, rainfall does not universally follow the same Wild > Ag pattern — it is a more system-specific driver.
+
+---
 
 - **Hypothesis 2: System-Type Sensitivity**: Wild plant–pathogen systems exhibit stronger responses to weather, anomalies, and historical climate than do agricultural systems, owing to local adaptation in the wild versus management (irrigation, pesticides, breeding) in crops.
+- **Hypothesis 2 validation**: 
+
+| System | Metric             | Temp Wild R² | Temp Ag R² | Rain Wild R² | Rain Ag R² | Wild > Ag? |
+| ------ | ------------------ | ------------ | ---------- | ------------ | ---------- | ---------- |
+| Temp   | Annual Historical  | 0.1153       | 0.0359     | –            | –          | yes        |
+| Temp   | Anomaly            | 0.0687       | 0.0071     | –            | –          | yes        |
+| Temp   | Contemporary       | 0.0740       | 0.0698     | –            | –          | slightly   |
+| Rain   | Annual Historical  | –            | –          | 0.0089       | 0.0313     | no         |
+| Rain   | Anomaly            | –            | –          | 0.0134       | 0.0590     | no         |
+| Rain   | Contemporary       | –            | –          | 0.0365       | 0.0242     | yes        |
+| Rain   | Monthly Historical | –            | –          | 0.0134       | 0.0590     | no         |
+
+**1. Temperature:**
+
+- Wild systems consistently show higher R² than agricultural for all three temperature metrics (annual historical, anomaly, contemporary).
+
+- **Conclusion: Wild plant–pathogen systems are indeed more sensitive to temperature effects → Hypothesis 2 validated for temperature.**
+
+**2. Rainfall:**
+
+- Only contemporary precipitation yields slightly higher Wild R² (0.0365 vs. 0.0242).
+
+- All other rainfall metrics (anomaly, annual & monthly historical) are stronger in agricultural systems.
+
+- **Conclusion: Hypothesis 2 is not upheld for precipitation → rainfall-driven disease variation does not show uniformly greater sensitivity in wild systems.**
+
 - **Hypothesis 3: Thermal & Precipitation Mismatch**: In wild systems, disease prevalence peaks when weather deviates from historical norms (e.g., unusually warm in a cool climate or vice versa)—a “mismatch” effect. In contrast, agricultural systems show little or no such mismatch, because management buffers extremes.
 - **Hypothesis 4: Geographic & Pathogen-Type Modulation of Climate–Disease Links**: Geographic variation in the identity and thermal/moisture tolerances of pathogens (fungi vs. bacteria vs. viruses vs. nematodes, etc.) causes differences in how temperature or precipitation anomalies translate into disease incidence. Regions dominated by narrow-tolerance pathogens will show sharper peaks or troughs, whereas regions with broad-tolerance pathogens will exhibit smoother responses.
 - **Hypothesis 5: Transmission-Mode Sensitivity to Anomalies**: Pathogens spread by vectors (insects or mites) will exhibit stronger sensitivity to precipitation anomalies (e.g., drought or heavy rain) than directly transmitted (e.g., soil-borne or contact) pathogens, because vector activity and life cycles respond acutely to moisture conditions.
