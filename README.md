@@ -16,15 +16,8 @@ The project integrates robust data analytics, machine learning modeling, and adv
   - [Business Requirements](#business-requirements)
   - [Hypothesis and how to validate?](#hypothesis-and-how-to-validate)
     - [**Hypothesis 1: Weather, Anomaly \& Historical Climate Effects**](#hypothesis-1-weather-anomaly--historical-climate-effects)
-    - [**Hypothesis 1 validation**](#hypothesis-1-validation)
     - [**Hypothesis 2: System-Type Sensitivity**](#hypothesis-2-system-type-sensitivity)
-    - [**Hypothesis 2 validation**](#hypothesis-2-validation)
     - [**Hypothesis 3: Thermal \& Precipitation Mismatch**](#hypothesis-3-thermal--precipitation-mismatch)
-    - [**Hypothesis 3 validation**](#hypothesis-3-validation)
-      - [1. Data \& Anomalies](#1-data--anomalies)
-      - [2. Statistical Approach](#2-statistical-approach)
-        - [Temperature](#temperature)
-        - [Rainfall](#rainfall)
   - [Project Plan](#project-plan)
   - [The rationale to map the business requirements to the Data Visualisations](#the-rationale-to-map-the-business-requirements-to-the-data-visualisations)
   - [Analysis techniques used](#analysis-techniques-used)
@@ -108,93 +101,72 @@ The project integrates robust data analytics, machine learning modeling, and adv
 ### **Hypothesis 1: Weather, Anomaly & Historical Climate Effects**  
   Contemporaneous weather (mean temperature or precipitation during a survey), deviations from monthly normals (“anomalies”), and long-term historical climate each independently influence plant-disease prevalence.
 
-### **Hypothesis 1 validation**
+**Validation Approach:**
+- Computed three temperature metrics (`temp_anomaly_C`, `contemp_temp_C`, `annual_mean_temp_C`) and three precipitation metrics (`rain_anomaly_daily`, `monthly_precip_mm_per_day`, `annual_precip_mm_per_day`).
+- Fitted separate linear and quadratic models for Wild vs. Agricultural systems.
+- Recorded R², adjusted R², and p-values for each term.
 
-**Weather (contemporaneous), anomalies, and historical climate each influence disease prevalence.**
+**Key Temperature Results (Wild vs. Ag):**
+| Metric                       | Wild R² | Ag R²  | Wild p(linear) | Ag p(linear) |
+|:----------------------------:|--------:|-------:|:--------------:|:------------:|
+| Temperature Anomaly          | 0.0687  | 0.0071 | 4.3e-10        | 1.3e-06      |
+| Contemporary Temperature     | 0.0740  | 0.0698 | 1.6e-09        | 4.5e-17      |
+| Historical Annual Temperature| 0.1153  | 0.0359 | 9.6e-14        | 7.2e-21      |
 
-| Predictor                         | System | R²     | Adj. R² | p(linear) | p(quad) | Interpretation                         |
-| --------------------------------- | ------ | ------ | ------- | --------- | ------- | -------------------------------------- |
-| **Temperature Anomaly**           | Wild   | 0.0687 | 0.0653  | 4.3e-10   | 7.9e-02 | Linear sig., quad not; \~6.9% variance |
-|                                   | Ag     | 0.0071 | 0.0065  | 1.3e-06   | 1.1e-03 | Both terms sig.; \~0.7% variance       |
-| **Contemp. Temperature**          | Wild   | 0.0740 | 0.0706  | 1.6e-09   | 3.7e-10 | Both terms sig.; \~7.4% variance       |
-|                                   | Ag     | 0.0698 | 0.0693  | 4.5e-17   | 3.8e-23 | Both terms sig.; \~7.0% variance       |
-| **Historical Annual Temperature** | Wild   | 0.1153 | 0.1120  | 9.6e-14   | 1.7e-11 | Both terms sig.; \~11.5% variance      |
-|                                   | Ag     | 0.0359 | 0.0353  | 7.2e-21   | 1.1e-24 | Both terms sig.; \~3.6% variance       |
+**Key Precipitation Results (Wild vs. Ag):**
+| Metric                         | Wild R² | Ag R²  | Wild p(linear) | Ag p(quadratic) |
+|:------------------------------:|--------:|-------:|:--------------:|:---------------:|
+| Rainfall Anomaly               | 0.0134  | 0.0590 | 6.6e-03        | 3.8e-06         |
+| Contemporary Precipitation     | 0.0365  | 0.0242 | 2.0e-05        | 7.5e-07         |
+| Historical Monthly Precipitation| 0.0134  | 0.0590 | 6.7e-03        | 3.7e-06         |
+| Annual Precipitation           | 0.0089  | 0.0313 | 2.8e-02        | 3.9e-08         |
 
-Conclusion:
-
-- All three temperature metrics explain more variance in wild than agricultural systems.
-  
-**Rainfall (anomaly, contemporary, monthly & annual) affects disease more strongly in wild than in agricultural systems.**
-
-| Predictor                          | System | R²     | Adj. R² | p(linear) | p(quad) | Interpretation                         |
-| ---------------------------------- | ------ | ------ | ------- | --------- | ------- | -------------------------------------- |
-| **Rainfall Anomaly**               | Wild   | 0.0134 | 0.0098  | 6.6e-03   | 1.0e-02 | Both terms significant; \~1.3% variance       |
-|                                    | Ag     | 0.0590 | 0.0585  | 8.5e-02   | 3.8e-06 | Quad significant, linear not; \~5.9% variance |
-| **Contemp. Precipitation (mm/d)**  | Wild   | 0.0365 | 0.0329  | 2.0e-05   | 6.4e-06 | Both terms significant; \~3.6% variance       |
-|                                    | Ag     | 0.0242 | 0.0237  | 7.5e-07   | 6.8e-02 | Linear significant, quad not; \~2.4% variance |
-| **Monthly Historical Rain (mm/d)** | Wild   | 0.0134 | 0.0098  | 6.7e-03   | 1.0e-02 | Both terms significant; \~1.3% variance       |
-|                                    | Ag     | 0.0590 | 0.0585  | 8.6e-02   | 3.7e-06 | Quad significant, linear not; \~5.9% variance |
-| **Annual Precipitation (mm/d)**    | Wild   | 0.0089 | 0.0053  | 2.8e-02   | 2.8e-02 | Both terms significant; \~0.9% variance       |
-|                                    | Ag     | 0.0313 | 0.0307  | 2.9e-04   | 3.9e-08 | Both terms significant; \~3.1% variance       |
-
-Conclusion:
-
-- Only Contemporary Precipitation shows a stronger effect in Wild (R² 0.0365 > 0.0242).
-
-- For Rainfall Anomaly, Monthly Historical, and Annual precipitation, Agricultural explains equal or more variance than Wild.
-
-- Thus, rainfall does not universally follow the same Wild > Ag pattern — it is a more system-specific driver.
+**Conclusion:**  
+- All three **temperature** metrics explain more variance in wild systems than in agricultural ones.  
+- For **precipitation**, only contemporary rainfall is stronger in wild; other metrics are equal or stronger in agriculture.  
+- **Hypothesis 1 is validated**: Weather, anomalies, and historical climate significantly influence disease incidence, with wild systems showing greater sensitivity to temperature effects.
 
 ---
 
 ### **Hypothesis 2: System-Type Sensitivity**
   Wild plant–pathogen systems exhibit stronger responses to weather, anomalies, and historical climate than do agricultural systems, owing to local adaptation in the wild versus management (irrigation, pesticides, breeding) in crops.
 
-### **Hypothesis 2 validation**
+**Validation Approach:**  
+- Compared R² values for each metric (temp & precip) between Wild and Ag.
 
-| System | Metric             | Temp Wild R² | Temp Ag R² | Rain Wild R² | Rain Ag R² | Wild > Ag? |
-| ------ | ------------------ | ------------ | ---------- | ------------ | ---------- | ---------- |
-| Temp   | Annual Historical  | 0.1153       | 0.0359     | –            | –          | yes        |
-| Temp   | Anomaly            | 0.0687       | 0.0071     | –            | –          | yes        |
-| Temp   | Contemporary       | 0.0740       | 0.0698     | –            | –          | slightly   |
-| Rain   | Annual Historical  | –            | –          | 0.0089       | 0.0313     | no         |
-| Rain   | Anomaly            | –            | –          | 0.0134       | 0.0590     | no         |
-| Rain   | Contemporary       | –            | –          | 0.0365       | 0.0242     | yes        |
-| Rain   | Monthly Historical | –            | –          | 0.0134       | 0.0590     | no         |
+**Summary (Wild R² vs. Ag R²):**
+| Metric                  | Wild R² | Ag R²  | Wild > Ag? |
+|:-----------------------:|--------:|-------:|:----------:|
+| Annual Historical Temp  | 0.1153  | 0.0359 | yes        |
+| Temp Anomaly            | 0.0687  | 0.0071 | yes        |
+| Contemporary Temp       | 0.0740  | 0.0698 | slightly   |
+| Annual Precipitation    | 0.0089  | 0.0313 | no         |
+| Precip Anomaly          | 0.0134  | 0.0590 | no         |
+| Contemporary Precip     | 0.0365  | 0.0242 | yes        |
+| Monthly Historical Precip| 0.0134 | 0.0590 | no         |
 
-**1. Temperature:**
-
-- Wild systems consistently show higher R² than agricultural for all three temperature metrics (annual historical, anomaly, contemporary).
-
-- **Conclusion: Wild plant–pathogen systems are indeed more sensitive to temperature effects → Hypothesis 2 validated for temperature.**
-
-**2. Rainfall:**
-
-- Only contemporary precipitation yields slightly higher Wild R² (0.0365 vs. 0.0242).
-
-- All other rainfall metrics (anomaly, annual & monthly historical) are stronger in agricultural systems.
-
-- **Conclusion: Hypothesis 2 is not upheld for precipitation → rainfall-driven disease variation does not show uniformly greater sensitivity in wild systems.**
+**Conclusion:**  
+- **Temperature:** Wild > Ag across all metrics.  
+- **Precipitation:** Mixed; only contemporary rain shows greater wild sensitivity.
 
 ---
 
 ### **Hypothesis 3: Thermal & Precipitation Mismatch** 
   In wild systems, disease prevalence peaks when weather deviates from historical norms (e.g., unusually warm in a cool climate or vice versa)—a “mismatch” effect. In contrast, agricultural systems show little or no such mismatch, because management buffers extremes.
 
-### **Hypothesis 3 validation**
-We tested Hypothesis 3: Thermal & Precipitation Mismatch by fitting OLS models with interaction terms between anomaly and historical climate for both wild and agricultural systems.
+**Validation Approach:**  
+- Fitted OLS with interaction `anomaly × historical` for Wild vs. Ag.
 
-#### 1. Data & Anomalies
+1. Data & Anomalies
 
 - Computed temperature and rainfall anomalies as deviations from long-term monthly means.
 
 - Took absolute values to capture “mismatch magnitude.”
 
-#### 2. Statistical Approach
+2. Statistical Approach
 - Separate OLS regressions for Wild vs. Ag:
 
-##### Temperature
+Temperature
 ```python
 import statsmodels.formula.api as smf
 
@@ -206,7 +178,7 @@ model = smf.ols(
 print(model.summary())
 ```
 
-##### Rainfall
+Rainfall
 ```python
 model = smf.ols(
     formula='incidence ~ rain_anomaly_daily * monthly_precip_mm_per_day',
@@ -224,10 +196,46 @@ print(model.summary())
 | **Temp × Historical** |    –0.0142 |  –0.0031 | **< 0.001** |
 | **Rain × Historical** |    –0.0312 |  –0.0069 |   *< 0.01*  |
 
-   - **Interpretation**: Wild systems show significant negative interaction effects for both temperature and rainfall anomalies with historical norms, indicating stronger mismatch sensitivity. Agricultural systems have weaker or no significant interactions.
-   - **Hypothesis 3 is validated**: Wild plant–pathogen systems exhibit stronger mismatch effects, where deviations from historical norms lead to increased disease incidence.
+**Conclusion:**  
+- Wild systems show strong negative interactions—classic mismatch.  
+- Agricultural systems have much weaker mismatch effects.
+- **Hypothesis 3 is validated**: Wild plant–pathogen systems exhibit stronger mismatch effects, where deviations from historical norms lead to increased disease incidence.
+
+---
 
 - **Hypothesis 4: Geographic & Pathogen-Type Modulation of Climate–Disease Links**: Geographic variation in the identity and thermal/moisture tolerances of pathogens (fungi vs. bacteria vs. viruses vs. nematodes, etc.) causes differences in how temperature or precipitation anomalies translate into disease incidence. Regions dominated by narrow-tolerance pathogens will show sharper peaks or troughs, whereas regions with broad-tolerance pathogens will exhibit smoother responses.
+
+*In layman terms* This means that different pathogen groups (virus, bacteria, pests, eukaryotic parasites) and their climatic‐tolerance breadths produce distinct anomaly–incidence curves.
+
+**Validation Approach:**
+- Computed `abs_temp_anom` and `abs_precip_anom` for each site.
+- Mapped `Antagonist_type_general` → pathogen group.
+- Defined `tolerance_class` (narrow/intermediate/broad) by 5–95% anomaly range.
+- Fitted OLS models with `anomaly × pathogen_group` and `anomaly × tolerance_class` interaction terms.
+
+**Key Results (Temp × Pathogen Group):**
+| Group             | Interaction Coef. | p-value |
+|:-----------------:|-----------------:|--------:|
+| Eukaryotic parasite | –0.0124         | 0.545   |
+| Pest               | –0.0076         | 0.812   |
+| Virus              | –0.0335         | 0.099   |
+
+None of these terms were significant (all p > 0.05).
+
+**Tolerance-Class Effect (Temp × Class):**
+| Class         | Interaction Coef. | p-value |
+|:-------------:|-----------------:|--------:|
+| Intermediate  | –0.0196         | 0.003 **|
+| Narrow        | +0.0048         | 0.848   |
+
+Only intermediate‐tolerance pathogens show a significantly flatter response; narrow‐tolerance behave like broad.
+
+**Conclusion:**  
+● Pathogen identity alone does **not** modulate mismatch sensitivity.  
+● Climatic‐tolerance breadth has a **weak** effect (only intermediate class differs).  
+
+---
+
 - **Hypothesis 5: Transmission-Mode Sensitivity to Anomalies**: Pathogens spread by vectors (insects or mites) will exhibit stronger sensitivity to precipitation anomalies (e.g., drought or heavy rain) than directly transmitted (e.g., soil-borne or contact) pathogens, because vector activity and life cycles respond acutely to moisture conditions.
 
 Validation Strategy:
