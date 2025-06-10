@@ -275,6 +275,8 @@ A GitHub Project board is established to manage the agile development of this ca
 **Sprint 1 - Day 1:**  
 <img src="images/Kanban_sprint_1_init.png" alt="Sprint 1 Start" width="45%" style="float: left; margin-right: 5%;" />
 <img src="images/Kanban_sprint_1_end.png"  alt="Sprint 1 End"   width="45%" style="float: right; margin-left: 5%;" />
+
+**Sprint 2 - Day 2-3:**
 <img src="images/Kanban_sprint_2_init.png" alt="Sprint 2 Start" width="45%" style="float: left; margin-right: 5%;" />
 <img src="images/Kanban_sprint_2_end.png" alt="Sprint 2 Start" width="45%" style="float: left; margin-right: 5%;" />
 
