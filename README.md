@@ -236,12 +236,28 @@ Only intermediate‐tolerance pathogens show a significantly flatter response; n
 
 ---
 
-- **Hypothesis 5: Transmission-Mode Sensitivity to Anomalies**: Pathogens spread by vectors (insects or mites) will exhibit stronger sensitivity to precipitation anomalies (e.g., drought or heavy rain) than directly transmitted (e.g., soil-borne or contact) pathogens, because vector activity and life cycles respond acutely to moisture conditions.
+- **Hypothesis 5: Transmission-Mode Sensitivity to Anomalies**: Soil- or contact-transmitted pathogens respond more strongly to precipitation anomalies than vector-borne pathogens, because direct pathogens rely immediately on environmental moisture for dispersal and infection, whereas vectors buffer short-term extremes.
 
-Validation Strategy:
-- Correlation analysis between `incidence` and climate metrics.
-- Comparison of means using visual plots (e.g., KDE, boxplot) across system types.
-- Stratified accuracy testing using Random Forest classifiers.
+*In layman terms:* Diseases spread directly (e.g. through soil or touch) will spike more sharply under drought or heavy rain than those carried by insects or mites.
+
+**Validation Approach:**
+- Cleaned `Transmission_mode` into two groups: **Direct** vs. **Vector-borne**.  
+- Computed `abs_precip_anom = |rain_anomaly_daily|`.  
+- Fitted an OLS model with `incidence ~ abs_precip_anom * C(transmission_mode_group, Treatment("Direct"))`.  
+- Extracted main effects and the interaction term to compare slopes.
+
+**Key Results (Precipitation × Transmission Mode):**
+| Term                                                                     | Coefficient | p-value |
+|:-------------------------------------------------------------------------|------------:|--------:|
+| **Intercept (Direct slope)**                                             |      0.1171 |  <0.001 |
+| **Vector-borne main effect** (offset at zero anomaly)                    |     –0.0414 |   0.040 |
+| **Direct slope** (`abs_precip_anom`)                                     |      0.0505 |  <0.001 |
+| **Vector-borne vs Direct slope diff** (`abs_precip_anom × Vector-borne`) |     –0.0150 |   0.062 |
+
+**Conclusion:**  
+- **Direct pathogens** have a steeper incidence increase with precipitation anomalies (slope ≈ 0.0505) than **vector-borne** pathogens (slope ≈ 0.0355).  
+- The slope difference is marginally non-significant (p ≈ 0.062), but the trend **reverses** our original expectation.  
+- **Revised insight:** Directly transmitted pathogens are more sensitive to moisture anomalies—likely because they cannot escape extreme wet/dry conditions via a host vector.  
 
 ## Project Plan
 * Outline the high-level steps taken for the analysis.
