@@ -18,6 +18,8 @@ The project integrates robust data analytics, machine learning modeling, and adv
     - [**Hypothesis 1: Weather, Anomaly \& Historical Climate Effects**](#hypothesis-1-weather-anomaly--historical-climate-effects)
     - [**Hypothesis 2: System-Type Sensitivity**](#hypothesis-2-system-type-sensitivity)
     - [**Hypothesis 3: Thermal \& Precipitation Mismatch**](#hypothesis-3-thermal--precipitation-mismatch)
+    - [**Hypothesis 4: Geographic \& Pathogen-Type Modulation of Climate–Disease Links**](#hypothesis-4-geographic--pathogen-type-modulation-of-climatedisease-links)
+    - [**Hypothesis 5: Transmission-Mode Sensitivity to Anomalies**](#hypothesis-5-transmission-mode-sensitivity-to-anomalies)
   - [Project Plan](#project-plan)
   - [The rationale to map the business requirements to the Data Visualisations](#the-rationale-to-map-the-business-requirements-to-the-data-visualisations)
   - [Analysis techniques used](#analysis-techniques-used)
@@ -203,7 +205,8 @@ print(model.summary())
 
 ---
 
-- **Hypothesis 4: Geographic & Pathogen-Type Modulation of Climate–Disease Links**: Geographic variation in the identity and thermal/moisture tolerances of pathogens (fungi vs. bacteria vs. viruses vs. nematodes, etc.) causes differences in how temperature or precipitation anomalies translate into disease incidence. Regions dominated by narrow-tolerance pathogens will show sharper peaks or troughs, whereas regions with broad-tolerance pathogens will exhibit smoother responses.
+### **Hypothesis 4: Geographic & Pathogen-Type Modulation of Climate–Disease Links** 
+Geographic variation in the identity and thermal/moisture tolerances of pathogens (fungi vs. bacteria vs. viruses vs. nematodes, etc.) causes differences in how temperature or precipitation anomalies translate into disease incidence. Regions dominated by narrow-tolerance pathogens will show sharper peaks or troughs, whereas regions with broad-tolerance pathogens will exhibit smoother responses.
 
 *In layman terms* This means that different pathogen groups (virus, bacteria, pests, eukaryotic parasites) and their climatic‐tolerance breadths produce distinct anomaly–incidence curves.
 
@@ -236,7 +239,8 @@ Only intermediate‐tolerance pathogens show a significantly flatter response; n
 
 ---
 
-- **Hypothesis 5: Transmission-Mode Sensitivity to Anomalies**: Soil- or contact-transmitted pathogens respond more strongly to precipitation anomalies than vector-borne pathogens, because direct pathogens rely immediately on environmental moisture for dispersal and infection, whereas vectors buffer short-term extremes.
+### **Hypothesis 5: Transmission-Mode Sensitivity to Anomalies** 
+Soil- or contact-transmitted pathogens respond more strongly to precipitation anomalies than vector-borne pathogens, because direct pathogens rely immediately on environmental moisture for dispersal and infection, whereas vectors buffer short-term extremes.
 
 *In layman terms:* Diseases spread directly (e.g. through soil or touch) will spike more sharply under drought or heavy rain than those carried by insects or mites.
 
