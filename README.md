@@ -272,20 +272,52 @@ A GitHub Project board is established to manage the agile development of this ca
 
 **GitHub Project Board:** [ClimaCrop Kanban Project](https://github.com/users/banerjixplores/projects/6/views/1)
 
-**Sprint 1 - Day 1:**  
-<img src="images/Kanban_sprint_1_init.png" alt="Sprint 1 Start" width="45%" style="float: left; margin-right: 5%;" />
-<img src="images/Kanban_sprint_1_end.png"  alt="Sprint 1 End"   width="45%" style="float: right; margin-left: 5%;" />
-<div style="clear: both;"></div>
+<!-- Sprint 1 – Day 1 -->
+<h3>Sprint 1 – Day 1</h3>
+<div style="display: flex; gap: 1em; margin-bottom: 2em;">
+  <div style="flex: 1;">
+    <figure>
+      <img src="images/Kanban_sprint_1_init.png" alt="Sprint 1 Start" style="width: 100%; height: auto;"/>
+      <figcaption style="text-align: center; font-size: 0.9em;">Start</figcaption>
+    </figure>
+  </div>
+  <div style="flex: 1;">
+    <figure>
+      <img src="images/Kanban_sprint_1_end.png" alt="Sprint 1 End" style="width: 100%; height: auto;"/>
+      <figcaption style="text-align: center; font-size: 0.9em;">End</figcaption>
+    </figure>
+  </div>
+</div>
 
-**Sprint 2 - Day 2:**
-<img src="images/Kanban_sprint_2_init.png" alt="Sprint 2 Start" width="45%" style="float: left; margin-right: 5%;" />
-<img src="images/Kanban_sprint_2_end.png" alt="Sprint 2 Start" width="45%" style="float: left; margin-right: 5%;" />
-<div style="clear: both;"></div>
+<!-- Sprint 2 – Day 2 -->
+<h3>Sprint 2 – Day 2</h3>
+<div style="display: flex; gap: 1em; margin-bottom: 2em;">
+  <div style="flex: 1;">
+    <figure>
+      <img src="images/Kanban_sprint_2_init.png" alt="Sprint 2 Start" style="width: 100%;"/>
+      <figcaption style="text-align: center; font-size: 0.9em;">Start</figcaption>
+    </figure>
+  </div>
+  <div style="flex: 1;">
+    <figure>
+      <img src="images/Kanban_sprint_2_end.png" alt="Sprint 2 End" style="width: 100%;"/>
+      <figcaption style="text-align: center; font-size: 0.9em;">End</figcaption>
+    </figure>
+  </div>
+</div>
 
-**Sprint 3 - Day 3:**
-<img src="images/Kanban_sprint_3_init.png" alt="Sprint 3 Start" width="45%" style="float: left; margin-right: 5%;" />
+<!-- Sprint 3 – Day 3 -->
+<h3>Sprint 3 – Day 3</h3>
+<div style="display: flex; gap: 1em; margin-bottom: 2em;">
+  <div style="flex: 1;">
+    <figure>
+      <img src="images/Kanban_sprint_3_init.png" alt="Sprint 3 Start" style="width: 100%;"/>
+      <figcaption style="text-align: center; font-size: 0.9em;">Start</figcaption>
+    </figure>
+  </div>
+  <!-- Add your “end” image when Day 3 is done -->
+</div>
 
-<div style="clear: both;"></div>
 
 
 **Sprint Breakdown & Detailed Tasks**
