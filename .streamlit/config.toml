@@ -1,0 +1,8 @@
+[theme]
+base="light"
+primaryColor="#2E7D32"            # a rich forest green
+backgroundColor="#E8F5E9"         # pale mint
+secondaryBackgroundColor="#C8E6C9" # soft leaf
+textColor="#1B5E20"               # deep pine
+font="sans serif"
+
