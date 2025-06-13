@@ -11,7 +11,7 @@ Want to see these insights in action?
 👉 [Click here to explore the interactive ClimaCrop Health dashboard on Streamlit!](https://climacrophealth-wjb9htkjbammfgqzsedk6f.streamlit.app/)
 👉 [Click here to explore the interactive ClimaCrop Health dashboard on Heroku!](https://climacrophealth-9f3f3967d5ca.herokuapp.com/)
 
-[![Dashboard screenshot](./dashboard_screenshot.png)](https://climacrophealth-wjb9htkjbammfgqzsedk6f.streamlit.app/)
+[![Dashboard screenshot](../images/dashboard_screenshot.png)](https://climacrophealth-wjb9htkjbammfgqzsedk6f.streamlit.app/)
 
 <p align="center">
   <img src="images/plant_disease.gif" alt="Climate Impact Animation" width="1000"/>
@@ -496,7 +496,7 @@ Insights from this project can inform policy and management, but are not intende
 ## Dashboard Design
 The ClimaCrop Health dashboard follows a clear, stakeholder-focused layout, supported by custom styling for sidebar navigation and all page elements. All sections are visually accessible and colorblind-friendly.
 
-Wireframe: [![Dashboard wireframe](./dashboard_wireframe.png)](https://climacrophealth-wjb9htkjbammfgqzsedk6f.streamlit.app/)
+Wireframe: [![Dashboard wireframe](../images/dashboard_wireframe.png)](https://climacrophealth-wjb9htkjbammfgqzsedk6f.streamlit.app/)
 
 Dashboard Pages and Content:
 
