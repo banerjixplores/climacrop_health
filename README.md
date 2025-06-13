@@ -104,8 +104,7 @@ The use of AI (e.g., model selection, feature importance ranking, and interactiv
 
 - **Risk Forecasting:**  Accept user-supplied temperature & rainfall (including anomalies) to output a disease‐risk score per region.  
 - **Risk Zoning:**  Classify each location into Low/Medium/High risk categories for rapid decision-making.  
-- **Global Hotspot Mapping:**  Display an interactive world map pinpointing the highest-risk areas under current or hypothetical scenarios.  
-- **Interactive Scenario Testing:**  Provide sliders or input controls so non-technical users (farmers, agronomists, conservationists) can simulate “What if June is +3 °C?” and instantly see updated risk zones.  
+- **Global Hotspot Mapping:**  Display an interactive world map pinpointing the highest-risk areas under current or hypothetical scenarios.   
 - **Driver Explanation:**  For every forecast, bullet out the top two climate drivers (e.g. “+2.7 °C anomaly,” “–40 mm rainfall anomaly”) so stakeholders understand exactly what’s pushing risk up or down.
 
 
