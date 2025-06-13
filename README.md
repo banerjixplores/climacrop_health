@@ -13,6 +13,7 @@ The project integrates robust data analytics, machine learning modeling, and adv
   - [Dataset Content](#dataset-content)
   - [Getting Started](#getting-started)
   - [Project Objectives](#project-objectives)
+  - [Analytics \& AI for Ecological and Agricultural Challenges](#analytics--ai-for-ecological-and-agricultural-challenges)
   - [Business Requirements](#business-requirements)
   - [Hypothesis and how to validate?](#hypothesis-and-how-to-validate)
     - [**Hypothesis 1: Weather, Anomaly \& Historical Climate Effects**](#hypothesis-1-weather-anomaly--historical-climate-effects)
@@ -23,7 +24,7 @@ The project integrates robust data analytics, machine learning modeling, and adv
   - [Project Plan](#project-plan)
   - [The rationale to map the business requirements to the Data Visualisations](#the-rationale-to-map-the-business-requirements-to-the-data-visualisations)
   - [Analysis techniques used](#analysis-techniques-used)
-  - [Ethical considerations](#ethical-considerations)
+  - [Ethical \& Scientific considerations](#ethical--scientific-considerations)
   - [Dashboard Design](#dashboard-design)
   - [Unfixed Bugs](#unfixed-bugs)
   - [Development Roadmap](#development-roadmap)
@@ -89,7 +90,15 @@ The project integrates robust data analytics, machine learning modeling, and adv
 - **Predict & Visualize Risk:** Build a concise predictive model and a user-friendly Streamlit dashboard so stakeholders can forecast disease under arbitrary weather scenarios.  
 - **Ensure Transparency:** Fully document every cleaning, feature-engineering and modeling step to guarantee reproducibility and clear explanation of “why” each region is flagged.
 
+## Analytics & AI for Ecological and Agricultural Challenges
 
+Modern agriculture and conservation face urgent, complex threats from climate change and emerging plant diseases. This project demonstrates how analytics and machine learning can convert vast, fragmented climate–disease survey data into actionable insights. By modeling the nonlinear effects of temperature and rainfall anomalies on plant health, and quantifying differences between wild and managed systems, the project enables:
+
+- **Evidence-based policy:** Interactive dashboards help policymakers prioritize regions and pathogen types at greatest risk, supporting better resource allocation and early-warning systems.
+- **Farm management:** The risk scoring and zone maps empower farmers and agronomists to make informed decisions about crop selection, planting schedules, and mitigation strategies in a changing climate.
+- **Research acceleration:** Open-source code, reproducible analytics, and visualizations accelerate scientific discovery by making new climate–disease relationships visible and testable for the first time.
+
+The use of AI (e.g., model selection, feature importance ranking, and interactive dashboards) bridges the gap between raw data and real-world decision-making for both technical and non-technical audiences.
 
 ## Business Requirements
 
@@ -413,21 +422,6 @@ Implement predictive algorithms:
 - Record optional walkthrough for stakeholders.
 - Tag and release final GitHub repository version (`v1.0-climacrop-capstone`).
 
-
-**Ethical & Scientific Considerations**
-
-**Transparency & Reproducibility**
-- Fully document all analytical decisions for transparency.
-- Provide clear and comprehensive notes within notebooks and markdown files.
-
-**Bias Mitigation**
-- Identify and acknowledge potential geographical biases and system-type coverage discrepancies.
-- Include clear discussions on how these biases were mitigated through analysis and interpretation strategies.
-
-**Data Privacy & Compliance**
-- Confirm the dataset does not contain identifiable sensitive information (compliant with ethical standards).
-
-
 ## The rationale to map the business requirements to the Data Visualisations
 * List your business requirements and a rationale to map them to the Data Visualisations
 
@@ -445,9 +439,20 @@ Implement predictive algorithms:
 **Generative AI Tools**:
 - Copilot and ChatGPT used for idea brainstorming, model structuring, and narrative alignment.
 
-## Ethical considerations
-* Were there any data privacy, bias or fairness issues with the data?
-* How did you overcome any legal or societal issues?
+## Ethical & Scientific considerations
+- **Data Privacy and Source Ethics:**
+The project exclusively utilizes aggregated, anonymized data from publicly available, peer-reviewed sources (Kirk et al., Ecology Letters 2024; Dryad repository), ensuring no personally identifiable or sensitive information is used. Data use complies with FAIR and open-science guidelines.
+
+- **Bias and Fairness:**
+- Potential geographical and system-type biases (e.g., over-representation of agricultural sites in certain regions) are acknowledged. Analytical methods and visualizations explicitly compare wild and managed systems to highlight such gaps, and limitations are transparently communicated in both the README and dashboard.
+- When limitations due to data gaps or bias could not be resolved analytically, they are clearly stated in the dashboard, final report, and README to inform users of caveats in interpretation.
+
+- **Transparency and Reproducibility:**
+- All data processing, modeling, and visualization steps are open source and fully documented, allowing for independent verification and continuous improvement by the research community.
+- Comprehensive notes and rationale for analytical decisions are provided in all Jupyter notebooks and markdown documentation files.
+
+- **Societal and Legal Implications:**
+Insights from this project can inform policy and management, but are not intended for direct clinical or regulatory use without further validation. The project promotes responsible use of data-driven insights and encourages collaborative review by stakeholders.
 
 ## Dashboard Design
 * List all dashboard pages and their content, either blocks of information or widgets, like buttons, checkboxes, images, or any other item that your dashboard library supports.
