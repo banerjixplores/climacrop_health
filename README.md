@@ -502,7 +502,13 @@ Insights from this project can inform policy and management, but are not intende
 ## Dashboard Design
 The ClimaCrop Health dashboard follows a clear, stakeholder-focused layout, supported by custom styling for sidebar navigation and all page elements. All sections are visually accessible and colorblind-friendly.
 
-Wireframe: [![Dashboard wireframe](../images/dashboard_wireframe.png)](https://climacrophealth-wjb9htkjbammfgqzsedk6f.streamlit.app/)
+<div style="display: flex; gap: 1em; margin-bottom: 2em;">
+  <div style="flex: 1;">
+    <figure>
+      <img src="images/dashboard_wireframe.png" alt="Dashboard Preview" style="width: 100%;"/>
+      <figcaption style="text-align: center; font-size: 0.9em;">Start</figcaption>
+    </figure>
+  </div>
 
 Dashboard Pages and Content:
 
