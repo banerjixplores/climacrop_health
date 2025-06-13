@@ -4,12 +4,22 @@
 
 The project integrates robust data analytics, machine learning modeling, and advanced visualization to enhance understanding and predict plant disease risks under climate variability and change.
 
+## Check Out the Live Dashboard!
+
+Want to see these insights in action?
+
+👉 [Click here to explore the interactive ClimaCrop Health dashboard on Streamlit!](https://climacrophealth-wjb9htkjbammfgqzsedk6f.streamlit.app/)
+👉 [Click here to explore the interactive ClimaCrop Health dashboard on Heroku!](https://climacrophealth-9f3f3967d5ca.herokuapp.com/)
+
+[![Dashboard screenshot](./dashboard_screenshot.png)](https://climacrophealth-wjb9htkjbammfgqzsedk6f.streamlit.app/)
+
 <p align="center">
   <img src="images/plant_disease.gif" alt="Climate Impact Animation" width="1000"/>
 </p>
 
 **Table of Contents**
 - [🍃 ClimaCrop Health: Plant Disease \& Climate Impact Analysis](#-climacrop-health-plant-disease--climate-impact-analysis)
+  - [Check Out the Live Dashboard!](#check-out-the-live-dashboard)
   - [Dataset Content](#dataset-content)
   - [Getting Started](#getting-started)
   - [Project Objectives](#project-objectives)
@@ -325,13 +335,6 @@ A GitHub Project board is established to manage the agile development of this ca
       <figcaption style="text-align: center; font-size: 0.9em;">Start</figcaption>
     </figure>
   </div>
-    <div style="flex: 1;">
-    <figure>
-      <img src="images/Kanban_sprint_3_end.png" alt="Sprint 3 End" style="width: 100%;"/>
-      <figcaption style="text-align: center; font-size: 0.9em;">End</figcaption>
-    </figure>
-  </div>
-</div>
 
 <!-- Sprint 4 – Day 4 -->
 <h3>Sprint 4 – Day 4</h3>
@@ -491,33 +494,85 @@ The project exclusively utilizes aggregated, anonymized data from publicly avail
 Insights from this project can inform policy and management, but are not intended for direct clinical or regulatory use without further validation. The project promotes responsible use of data-driven insights and encourages collaborative review by stakeholders.
 
 ## Dashboard Design
-* List all dashboard pages and their content, either blocks of information or widgets, like buttons, checkboxes, images, or any other item that your dashboard library supports.
-* Later, during the project development, you may revisit your dashboard plan to update a given feature (for example, at the beginning of the project you were confident you would use a given plot to display an insight but subsequently you used another plot type).
-* How were data insights communicated to technical and non-technical audiences?
-* Explain how the dashboard was designed to communicate complex data insights to different audiences. 
+The ClimaCrop Health dashboard follows a clear, stakeholder-focused layout, supported by custom styling for sidebar navigation and all page elements. All sections are visually accessible and colorblind-friendly.
+
+Wireframe: [![Dashboard wireframe](./dashboard_wireframe.png)](https://climacrophealth-wjb9htkjbammfgqzsedk6f.streamlit.app/)
+
+Dashboard Pages and Content:
+
+| Page                   | Description                                                                                |
+| ---------------------- | ------------------------------------------------------------------------------------------ |
+| Project Summary        | Landing page with logo, objectives, dataset summary, business requirements, hero image     |
+| Geographical Analysis  | Interactive global map, spatial risk visualization, sampling bias insight, data download   |
+| Hypotheses Validation  | Collapsible hypotheses, validation steps, rationale for each, and clear result callouts    |
+| Correlations           | Heatmaps, scatterplots, and callout boxes for redundancy and feature selection             |
+| Mismatch               | Visualizes mismatch effects by climate anomaly, system type, and pathogen group            |
+| Climate by Pathogen    | Violin plots, stakeholder interpretation, and actionable insights                          |
+| Pathogen Distributions | Stacked barplots for host, pathogen, and climate, with interpretation and recommendations  |
+| Model Insights         | Model comparison tables (R², metrics), permutation importance, dropdown filters, scenarios |
+
+Styling notes:
+
+- Custom color and shape styling for all sidebar navigation and information blocks.
+
+- Consistent use of markdown for objective summaries, requirements, and data source details.
+
+- Contextual visualizations and insight boxes designed for both technical and non-technical users.
 
 ## Unfixed Bugs
-* Please mention unfixed bugs and why they were not fixed. This section should include shortcomings of the frameworks or technologies used. Although time can be a significant variable to consider, paucity of time and difficulty understanding implementation are not valid reasons to leave bugs unfixed.
-* Did you recognise gaps in your knowledge, and how did you address them?
-* If applicable, include evidence of feedback received (from peers or instructors) and how it improved your approach or understanding.
+* HTML/Plotly Export: Some Plotly/HTML visualizations may not scale uniformly or require scrolling on some browsers.
+* Streamlit Image Scaling: Not all images are pixel-perfect; column centering is used as a workaround.
+* Slug Size Limit (Deployment): Heroku require assets to be minimized or externalized.
+* Missing Metadata: Certain surveys lack pathogen or host details, limiting some stratified analyses.
+* Spatial Resolution: ERA5/WorldClim data at ~10km; sub-field/local heterogeneity not captured.
+* Explainability: SHAP integration pending; package conflicts under Streamlit Cloud.
 
 ## Development Roadmap
-* What challenges did you face, and what strategies were used to overcome these challenges?
-* What new skills or tools do you plan to learn next based on your project experience? 
 
-| Phase | Description |
-|-------|-------------|
-| Data Understanding | Clean, merge, validate, and profile datasets |
-| Feature Engineering | Engineer `incidence_zone`, climate anomalies, study metadata |
-| Modeling | Train classification & regression models; validate performance |
-| Dashboard | Build Streamlit app with sliders, KPI cards, and prediction interface |
-| Explainability | Use SHAP to visualize feature importance |
-| Deployment & Docs | Finalize README, deploy dashboard, and document pipeline
+| Phase               | Description                                                          |
+| ------------------- | -------------------------------------------------------------------- |
+| Data Understanding  | Clean, merge, validate, and profile survey and climate data          |
+| Feature Engineering | Create climate anomalies, zone metadata, and engineered features     |
+| Modeling            | Train/test ML models (RF, Ridge, SVR, XGB, stacking); cross-validate |
+| Dashboard           | Build Streamlit app with interactive, filterable visualizations      |
+| Explainability      | Implement permutation importance, plan SHAP integration              |
+| Deployment & Docs   | Deploy to Streamlit Cloud, finalize README, collect peer feedback    |
+| Review & Iterate    | Address feedback, refine models, enhance dashboard usability         |
+
+Key Challenges:
+- Hyperparameter tuning during machine learning.
+
+Next Steps:
+
+- SHAP-based model explainability
+
+- Automated retraining pipelines
+
+- More granular mapping (sub-national)
+
+- Stakeholder survey integration
+
 
 ## Deployment
+Streamlit Cloud (production):
+[Streamlit](https://climacrophealth-wjb9htkjbammfgqzsedk6f.streamlit.app/)
+[Heroku](https://climacrophealth-9f3f3967d5ca.herokuapp.com/)
+
+Heroku (legacy):
+Previous test deployments. Use .slugignore to control asset inclusion.
+
+Setup:
+
+Store large assets (plots, images) in /images/
+
+Install requirements: pip install -r requirements.txt
+
+Standard Streamlit/Heroku deploy as per docs
+
 ### Heroku
 
-* The App live link is: https://YOUR_APP_NAME.herokuapp.com/ 
+* The App live link is: [Streamlit](https://climacrophealth-wjb9htkjbammfgqzsedk6f.streamlit.app/)
+                        [Heroku](https://climacrophealth-9f3f3967d5ca.herokuapp.com/)
 * Set the runtime.txt Python version to a [Heroku-20](https://devcenter.heroku.com/articles/python-support#supported-runtimes) stack currently supported version.
 * The project was deployed to Heroku using the following steps.
 
@@ -530,43 +585,52 @@ Insights from this project can inform policy and management, but are not intende
 
 
 ## Main Data Analysis Libraries
-* Here you should list the libraries you used in the project and provide an example(s) of how you used these libraries.
-
-```bash
-pandas, numpy, seaborn, plotly, matplotlib, scikit-learn, joblib, streamlit
-```
+| Library      | Example Use                                 |
+| ------------ | ------------------------------------------- |
+| pandas       | Data cleaning, merging, feature engineering |
+| numpy        | Numeric computation, anomaly calculations   |
+| matplotlib   | Static EDA and regression plots             |
+| seaborn      | Violin, swarm, and distribution plots       |
+| plotly       | Interactive mapping and dashboards          |
+| scikit-learn | Modeling (RF, Ridge, SVR, stacking), CV     |
+| streamlit    | Dashboard building, widgets, navigation     |
+| statsmodels  | OLS regressions for hypothesis testing      |
 
 
 ## Notebook contents
-| Notebook                           | Inputs                                                                             | Outputs                                                                        |
-| ---------------------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
-| 00\_data\_load\_and\_inspect.ipynb | `data/raw/merged_climate_disease_final.csv`, Python packages (Pandas, NumPy, etc.) | DataFrame inspection, initial distribution plots, optional `raw_inspected.csv` |
-| 01\_etl\_preprocessing.ipynb       | `data/raw/merged_climate_disease_final.csv` (or `raw_inspected.csv`)               | `data/processed/cleaned_climate_disease.csv`, engineered features              |
-…                                                                             |
+| Notebook                           | Inputs                                       | Outputs/Description                                               |
+| ---------------------------------- | -------------------------------------------- | ----------------------------------------------------------------- |
+| 00\_data\_load\_and\_inspect.ipynb | data/raw/merged\_climate\_disease\_final.csv | DataFrame summary, dist. plots, raw\_inspected.csv                |
+| 01\_etl\_preprocessing.ipynb       | data/raw/merged\_climate\_disease\_final.csv | data/processed/cleaned\_climate\_disease.csv, engineered features |
+| 02\_eda\_exploration.ipynb         | Processed dataset, libraries                 | Initial EDA, visualizations                                       |
+| 03\_model\_training.ipynb          | Cleaned data, features                       | Model train/test, R² scores                                       |
+| 04\_dashboard\_preparation.ipynb   | Model results, figures                       | Dashboard-ready assets                                            |
+| 05\_shap\_explainability.ipynb     | Models, data                                 | SHAP value plots (planned)                                        |
+| 06\_modeling\_workflow\_bak.ipynb  | All above + scripts                          | Final model comparisons                                           |
+                                                                        |
 
 
 
 ## Credits 
 
-* In this section, you need to reference where you got your content, media and extra help from. It is common practice to use code from other repositories and tutorials, however, it is important to be very specific about these sources to avoid plagiarism. 
-* You can break the credits section up into Content and Media, depending on what you have included in your project. 
-
 ### Content 
 
 - Primary dataset and paper: Kirk et al. (2024), Ecology Letters
 - Data source: [https://datadryad.org/stash/dataset/doi:10.5061/dryad.p8cz8wb0h](https://datadryad.org/stash/dataset/doi:10.5061/dryad.p8cz8wb0h)
-- Method inspiration: Code Institute bootcamp resources
+- Method inspiration: Code Institute bootcamp resources, Streamlit/Plotly docs
+- LLM assistance (ChatGPT, Copilot): ChatGPT for brainstorming, code structuring, and narrative alignment
 
 ### Media
 
-- The photos used on the home and sign-up page are from This Open-Source site
-- The images used for the gallery page were taken from this other open-source site
+- Front-page image: Rose Black Spot (Diplocarpon rosae)—Efekto blog (fair use)
+- All data/map plots generated by this project unless otherwise credited
 
 
 
 ## Acknowledgements 
 - Mentors and reviewers at Code Institute
-- Code Institute Slack peer feedback group
+- Peer testers from Code Institute Slack
+- Special thanks to Vasi, Spencer, Niel, John, Danielle for project guidance and feedback
 
 <p align="center">
   <img src="images/plant_health_logo.jpg" alt="Plant Health Footer Logo" width="120"/>
