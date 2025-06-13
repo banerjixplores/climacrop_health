@@ -8,8 +8,9 @@ The project integrates robust data analytics, machine learning modeling, and adv
 
 Want to see these insights in action?
 
-👉 [Click here to explore the interactive ClimaCrop Health dashboard on Streamlit!](https://climacrophealth-wjb9htkjbammfgqzsedk6f.streamlit.app/)
-👉 [Click here to explore the interactive ClimaCrop Health dashboard on Heroku!](https://climacrophealth-9f3f3967d5ca.herokuapp.com/)
+[Click here to explore the interactive ClimaCrop Health dashboard on Streamlit!](https://climacrophealth-wjb9htkjbammfgqzsedk6f.streamlit.app/)
+<br>
+[Click here to explore the interactive ClimaCrop Health dashboard on Heroku!](https://climacrophealth-9f3f3967d5ca.herokuapp.com/)
 
 <div style="display: flex; gap: 1em; margin-bottom: 2em;">
   <div style="flex: 1;">
