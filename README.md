@@ -11,7 +11,13 @@ Want to see these insights in action?
 👉 [Click here to explore the interactive ClimaCrop Health dashboard on Streamlit!](https://climacrophealth-wjb9htkjbammfgqzsedk6f.streamlit.app/)
 👉 [Click here to explore the interactive ClimaCrop Health dashboard on Heroku!](https://climacrophealth-9f3f3967d5ca.herokuapp.com/)
 
-[![Dashboard screenshot](../images/dashboard_screenshot.png)](https://climacrophealth-wjb9htkjbammfgqzsedk6f.streamlit.app/)
+<div style="display: flex; gap: 1em; margin-bottom: 2em;">
+  <div style="flex: 1;">
+    <figure>
+      <img src="images/dashboard_screenshot.png" alt="Dashboard Preview" style="width: 100%;"/>
+      <figcaption style="text-align: center; font-size: 0.9em;">Start</figcaption>
+    </figure>
+  </div>
 
 <p align="center">
   <img src="images/plant_disease.gif" alt="Climate Impact Animation" width="1000"/>
