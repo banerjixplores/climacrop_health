@@ -112,7 +112,7 @@ st.markdown(
     <div class='story-intro'>
       Welcome to <strong>ClimaCrop Health</strong>—an interactive dashboard weaving together  
       plant-disease surveys and climate records to tell a <span class="highlight">data-driven story</span>  
-      of how weather shapes outbreaks in both wild ecosystems and our farms.
+      of how weather shapes outbreaks in both natural ecosystems and our farms.
     </div>
     """,
     unsafe_allow_html=True
@@ -163,7 +163,7 @@ story_box([
     "<strong>Risk Forecasting:</strong> Input custom temperature & rainfall scenarios to output disease-risk scores.",
     "<strong>Risk Zoning:</strong> Classify locations into Low/Medium/High risk for rapid decision-making.",
     "<strong>Global Hotspot Mapping:</strong> Interactive world map of current or hypothetical risk zones.",
-    "<strong>Interactive Scenario Testing:** Sliders for non-technical users to ask 'What if June is +3 °C?'.",
+    "<strong>Interactive Scenario Testing:</strong> Sliders for non-technical users to ask 'What if June is +3 °C?'.",
     "<strong>Driver Explanation:</strong> Bullet out the top two climate drivers so stakeholders know **why** risk changes."
 ], style="requirements")
 
@@ -176,7 +176,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# ───────── Dataset Content ─────────
+# ───────── Dataset Sources and Content ─────────
 story_box([
     "Contains <strong>5,906</strong> plant–disease observations (1984–2019) from over 4,300 global studies.",
     "Paired with ERA5-land monthly data and 30-year WorldClim normals for anomaly calculation.",
@@ -185,6 +185,40 @@ story_box([
     'Source: <a href="https://doi.org/10.5061/dryad.p8cz8wb0h" target="_blank">'
     'Dryad Repository – DOI 10.5061/dryad.p8cz8wb0h</a>'
 ], style="dataset")
+st.markdown("""
+<div class="callout-note">
+  <strong>Data Sources</strong><br>
+  <ul>
+    <li><b>Disease Surveys (1984–2019):</b>
+      <ul>
+        <li>Collated from peer‐reviewed publications via a systematic literature search.</li>
+        <li>Each record includes:
+          <ul>
+            <li><b>Host species</b> (scientific name, order)</li>
+            <li><b>Pathogen category</b> (virus, bacteria, eukaryotic parasite, pest)</li>
+            <li><b>System type</b> (natural vs. agricultural)</li>
+            <li><b>Sampling window</b> (start/end month) and <b>sample size</b> (n_total, n_infected)</li>
+            <li><b>Location</b> (latitude, longitude; geocoded if needed)</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><b>Climate & Weather Data:</b>
+      <ul>
+        <li><b>Historical Monthly Normals (Hₘ):</b> 30-year monthly averages (1960–1990) for temperature and precipitation from WorldClim V1.</li>
+        <li><b>Historical Annual Climate (Hₐ):</b> 30-year annual means (WorldClim BIO1 and BIO12).</li>
+        <li><b>Contemporaneous Weather (W):</b> Monthly mean temperature and total precipitation during each survey window, pulled via Google Earth Engine from ERA5-Land (aggregated to site coordinates).</li>
+      </ul>
+    </li>
+    <li><b>Pathogen Metadata:</b>
+      <ul>
+        <li>Additional lookup tables for pathogen thermal/moisture niche breadth (if available).</li>
+        <li>Transmission mode labels (vector‐borne vs. direct).</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+""", unsafe_allow_html=True)
 
 st.markdown(
     """

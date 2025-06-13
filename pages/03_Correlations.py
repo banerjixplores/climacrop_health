@@ -6,7 +6,7 @@ import streamlit.components.v1 as components
 ICON_PATH = Path(__file__).parent / "images" / "corr_icon.ico"
 st.set_page_config(
     page_title="Correlations",
-    page_icon="🌡",
+    page_icon="➿",
     layout="wide",
 )
 
@@ -43,8 +43,10 @@ div[data-testid="stExpander"] svg {
 """, unsafe_allow_html=True)
 
 # ───────── Header & Intro ─────────
-st.header("🌡 Climate Variable Correlations")
-st.markdown("Which metrics move together—and which anomalies stand alone?")
+st.markdown(
+    "<h1 style='text-align:center; color:#2E7D32;'> 🌡 Climate Variable Correlations </h1>",
+    unsafe_allow_html=True
+)
 
 # ───────── Goal note ─────────
 st.markdown("""
