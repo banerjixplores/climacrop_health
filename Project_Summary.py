@@ -181,13 +181,26 @@ story_box([
     "Contains <strong>5,906</strong> plant–disease observations (1984–2019) from over 4,300 global studies.",
     "Paired with ERA5-land monthly data and 30-year WorldClim normals for anomaly calculation.",
     "Each record includes host, parasite, location, infected count, plus climate metrics "
-    "(e.g., historical `bio01`, precipitation `bio12`, and recent anomalies).",
-    'Source: <a href="https://doi.org/10.5061/dryad.p8cz8wb0h" target="_blank">'
-    'Dryad Repository – DOI 10.5061/dryad.p8cz8wb0h</a>'
+    "(e.g., historical <code>bio01</code>, precipitation <code>bio12</code>, and recent anomalies)."
 ], style="dataset")
+
+# Add both dataset sources and citation in a clean HTML block below:
 st.markdown("""
 <div class="callout-note">
-  <strong>Data Sources</strong><br>
+  <strong>Sources:</strong>
+  <ul>
+    <li>
+      <a href="https://doi.org/10.5061/dryad.p8cz8wb0h" target="_blank">
+      Dryad Repository – DOI 10.5061/dryad.p8cz8wb0h</a>
+    </li>
+    <li>
+      <a href="https://onlinelibrary.wiley.com/doi/epdf/10.1111/ele.70062" target="_blank">
+      Kirk, P.M. et al. (2025). "Impacts of weather anomalies and climate on plant disease." <i>Ecology Letters</i>.
+      </a>
+    </li>
+  </ul>
+  <hr style="margin:12px 0;">
+  <strong>Data Sources</strong>
   <ul>
     <li><b>Disease Surveys (1984–2019):</b>
       <ul>
