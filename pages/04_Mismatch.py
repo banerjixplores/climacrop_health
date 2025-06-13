@@ -86,7 +86,7 @@ file_map = {
 }
 
 # ───────── User selections ─────────
-system = st.selectbox("System", ["Agricultural", "Natural"])
+system = st.selectbox("System", ["Agricultural", "Wild"])
 metric = st.selectbox("Metric", ["Temperature vs. Incidence", "Rainfall vs. Incidence"])
 
 chosen_file = file_map[(system, metric)]

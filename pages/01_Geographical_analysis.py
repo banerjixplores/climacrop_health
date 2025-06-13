@@ -15,6 +15,40 @@ st.set_page_config(
 # ───────── Reuse color-blind–safe CSS + story_box helper ─────────
 st.markdown("""
 <style>
+:root {
+  --primary-color: #2E7D32;
+  --background-color: #F1F8E9;
+  --secondary-bg-color: #A1D99B;
+  --text-color: #0B3D0B;
+}
+
+/* Main summary/info boxes */
+.box-summary, .box-objectives {
+  background-color: #F7FCF5;
+  border-left: 6px solid #1F78B4;  /* blue for colorblind safety */
+  color: var(--text-color);
+  padding: 18px 18px 18px 18px;
+  margin: 24px 0 18px 0;
+  border-radius: 6px;
+  box-shadow: 0 8px 32px rgba(44,62,80,0.16), 0 2px 12px rgba(44,62,80,0.13);
+  font-size: 1.09rem;
+}
+.box-objectives {
+  background-color: #E5F5E0;  /* pale green, colorblind safe */
+  border-left: 6px solid #33A02C; /* green */
+}
+
+.story-intro {
+  font-size: 1.27rem;
+  font-weight: 600;
+  text-align: center;
+  margin: 22px 0 8px 0;
+  color: var(--primary-color);
+}
+.story-intro span.highlight {
+  color: #1F78B4;
+  font-style: italic;
+}
 /* reuse your existing box styles here… */
 /* ───────── Story Intro Styling ───────── */
 .story-intro {
@@ -45,12 +79,14 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 def story_box(items: list[str], style: str):
-    cls = "box-summary" if style=="summary" else "box-objectives"
+    # style: "summary" or "objectives"
+    cls = "box-summary" if style == "summary" else "box-objectives"
     html = f"<div class='{cls}'><ul>"
     for it in items:
         html += f"<li>{it}</li>"
     html += "</ul></div>"
     st.markdown(html, unsafe_allow_html=True)
+
     
 # ───────── Title & Map Caption ─────────
 st.markdown(
@@ -59,23 +95,21 @@ st.markdown(
 )
 
 # ───────── Centered Map Embed ─────────
-col1, col2, col3 = st.columns([1, 2, 1])
-with col2:
-    # replace with your actual map HTML or Streamlit chart call
-    components.html(
-        (Path(__file__).parent.parent / "images" / "global_map.html").read_text(encoding="utf-8"),
-        height=600,
-        width=800,
-        scrolling=True
-    )
+col1, col2, col3 = st.columns([0.5, 2, 0.5])   # Wider center column
 
 with col2:
+    components.html(
+        (Path(__file__).parent.parent / "images" / "global_map.html").read_text(encoding="utf-8"),
+        height=750,       # Increased from 600 to 750 (or more if needed)
+        width=1100,       # Increased from 800 to 1100 (or adjust as fits your app)
+        scrolling=True
+    )
     st.markdown(
         """
         <p style='
             text-align: center;
             color: var(--text-color);
-            font-size: 0.9rem;
+            font-size: 1.0rem;
             font-style: italic;
             margin-top: -8px;
         '>
@@ -84,6 +118,7 @@ with col2:
         """,
         unsafe_allow_html=True
     )
+
 # ───────── Caption for the Figure ─────────
 st.markdown(
     """
@@ -102,44 +137,23 @@ story_box([
 
 
 # ───────── Insights for Technical Teams ─────────
-st.markdown(
-    """
-    <div class='story-intro'>
-      Insights for <strong>Technical Teams</strong>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
 
-
+st.markdown('<h2 class="rationale">Insights for <strong>Technical Teams</strong></h2>', unsafe_allow_html=True)
 story_box([
     "Strong clustering in mid-latitudes & Africa—check for spatial sampling bias.",
     "Color gradient spans 10–30 °C, indicating robust temperature coverage for modeling."
 ], style="objectives")
 
 # ───────── Insights for Farmers ─────────
-st.markdown(
-    """
-    <div class='story-intro'>
-      Insights for <strong>Farmers</strong>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+st.markdown('<h2 class="rationale">Insights for <strong>Farmers</strong></h2>', unsafe_allow_html=True)
+
 story_box([
     "Assess your region’s marker density to spot under- or over-sampling.",
     "Hover over points to compare local incidence rates and survey years."
 ], style="objectives")
 
 # ───────── Insights for Environmental Agencies ─────────
-st.markdown(
-    """
-    <div class='story-intro'>
-      Insights for <strong>Environmental Agencies</strong>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+st.markdown('<h2 class="rationale">Insights for <strong>Environmental Agencies</strong></h2>', unsafe_allow_html=True)
 story_box([
     "Identify ‘cold-spots’ (few surveys) to prioritize wild-plant disease monitoring.",
     "Use this map to guide resource allocation for new field surveys."

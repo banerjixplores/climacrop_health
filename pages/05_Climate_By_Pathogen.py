@@ -5,7 +5,7 @@ import streamlit.components.v1 as components
 # ───────── Page config & icon ─────────
 st.set_page_config(
     page_title="Who Lives in What Climate?",
-    page_icon="🦠",
+    page_icon="🌦️",
     layout="wide",
 )
 
