@@ -70,6 +70,19 @@ st.markdown("""
 .box-details li {
   margin-bottom: 8px;
 }
+div[data-testid="stExpander"] > div[role="button"],
+div[data-testid="stExpander"] button[role="button"] {
+  background-color: #C7E9C0 !important;    /* pale green */
+  border-left: 4px solid #2E7D32 !important;
+  border-radius: 4px !important;
+    box-shadow: 0 8px 40px rgba(44,62,80,0.36), 0 2px 12px rgba(44,62,80,0.18);
+  padding: 8px 16px !important;
+  margin-bottom: 8px !important;
+}
+div[data-testid="stExpander"] svg {
+  stroke: #2E7D32 !important;
+}
+
 </style>
 """, unsafe_allow_html=True)
 
@@ -177,61 +190,51 @@ st.markdown(
 )
 
 # ───────── Dataset Sources and Content ─────────
+# Main box: summary
 story_box([
     "Contains <strong>5,906</strong> plant–disease observations (1984–2019) from over 4,300 global studies.",
     "Paired with ERA5-land monthly data and 30-year WorldClim normals for anomaly calculation.",
     "Each record includes host, parasite, location, infected count, plus climate metrics "
-    "(e.g., historical <code>bio01</code>, precipitation <code>bio12</code>, and recent anomalies)."
+    "(e.g., historical <code>bio01</code>, precipitation <code>bio12</code>, and recent anomalies).",
+    'Sources: <a href="https://doi.org/10.5061/dryad.p8cz8wb0h" target="_blank">Dryad Repository</a>; '
+    '<a href="https://onlinelibrary.wiley.com/doi/epdf/10.1111/ele.70062" target="_blank">'
+    'Kirk et al. (2025), Ecology Letters</a>'
 ], style="dataset")
 
-# Add both dataset sources and citation in a clean HTML block below:
-st.markdown("""
-<div class="callout-note">
-  <strong>Sources:</strong>
-  <ul>
-    <li>
-      <a href="https://doi.org/10.5061/dryad.p8cz8wb0h" target="_blank">
-      Dryad Repository – DOI 10.5061/dryad.p8cz8wb0h</a>
-    </li>
-    <li>
-      <a href="https://onlinelibrary.wiley.com/doi/epdf/10.1111/ele.70062" target="_blank">
-      Kirk, P.M. et al. (2025). "Impacts of weather anomalies and climate on plant disease." <i>Ecology Letters</i>.
-      </a>
-    </li>
-  </ul>
-  <hr style="margin:12px 0;">
-  <strong>Data Sources</strong>
-  <ul>
-    <li><b>Disease Surveys (1984–2019):</b>
-      <ul>
-        <li>Collated from peer‐reviewed publications via a systematic literature search.</li>
-        <li>Each record includes:
-          <ul>
-            <li><b>Host species</b> (scientific name, order)</li>
-            <li><b>Pathogen category</b> (virus, bacteria, eukaryotic parasite, pest)</li>
-            <li><b>System type</b> (natural vs. agricultural)</li>
-            <li><b>Sampling window</b> (start/end month) and <b>sample size</b> (n_total, n_infected)</li>
-            <li><b>Location</b> (latitude, longitude; geocoded if needed)</li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-    <li><b>Climate & Weather Data:</b>
-      <ul>
-        <li><b>Historical Monthly Normals (Hₘ):</b> 30-year monthly averages (1960–1990) for temperature and precipitation from WorldClim V1.</li>
-        <li><b>Historical Annual Climate (Hₐ):</b> 30-year annual means (WorldClim BIO1 and BIO12).</li>
-        <li><b>Contemporaneous Weather (W):</b> Monthly mean temperature and total precipitation during each survey window, pulled via Google Earth Engine from ERA5-Land (aggregated to site coordinates).</li>
-      </ul>
-    </li>
-    <li><b>Pathogen Metadata:</b>
-      <ul>
-        <li>Additional lookup tables for pathogen thermal/moisture niche breadth (if available).</li>
-        <li>Transmission mode labels (vector‐borne vs. direct).</li>
-      </ul>
-    </li>
-  </ul>
-</div>
-""", unsafe_allow_html=True)
+# Expander for Data Sources
+with st.expander("Show full data sources and processing details"):
+    st.markdown("""
+    <ul>
+      <li><b>Disease Surveys (1984–2019):</b>
+        <ul>
+          <li>Collated from peer‐reviewed publications via a systematic literature search.</li>
+          <li>Each record includes:
+            <ul>
+              <li><b>Host species</b> (scientific name, order)</li>
+              <li><b>Pathogen category</b> (virus, bacteria, eukaryotic parasite, pest)</li>
+              <li><b>System type</b> (natural vs. agricultural)</li>
+              <li><b>Sampling window</b> (start/end month) and <b>sample size</b> (n_total, n_infected)</li>
+              <li><b>Location</b> (latitude, longitude; geocoded if needed)</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><b>Climate & Weather Data:</b>
+        <ul>
+          <li><b>Historical Monthly Normals (Hₘ):</b> 30-year monthly averages (1960–1990) for temperature and precipitation from WorldClim V1.</li>
+          <li><b>Historical Annual Climate (Hₐ):</b> 30-year annual means (WorldClim BIO1 and BIO12).</li>
+          <li><b>Contemporaneous Weather (W):</b> Monthly mean temperature and total precipitation during each survey window, pulled via Google Earth Engine from ERA5-Land (aggregated to site coordinates).</li>
+        </ul>
+      </li>
+      <li><b>Pathogen Metadata:</b>
+        <ul>
+          <li>Additional lookup tables for pathogen thermal/moisture niche breadth (if available).</li>
+          <li>Transmission mode labels (vector‐borne vs. direct).</li>
+        </ul>
+      </li>
+    </ul>
+    """, unsafe_allow_html=True)
+
 
 st.markdown(
     """

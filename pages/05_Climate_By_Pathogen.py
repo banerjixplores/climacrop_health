@@ -26,7 +26,10 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ───────── Title & Goal ─────────
-st.header("Who Lives in What Climate? (By Pathogen & System)")
+st.markdown(
+    "<h1 style='text-align:center; color:#2E7D32;'> Who Lives in What Climate? (By Pathogen & System) </h1>",
+    unsafe_allow_html=True
+)
 st.markdown(
     '<div class="callout-note">'
     '<strong>Goal:</strong> To Compare the climate niches occupied by each pathogen group in Agricultural vs. Natural plant systems.<br>'

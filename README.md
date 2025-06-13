@@ -326,10 +326,47 @@ A GitHub Project board is established to manage the agile development of this ca
       <figcaption style="text-align: center; font-size: 0.9em;">Start</figcaption>
     </figure>
   </div>
-  <!-- Add your “end” image when Day 3 is done -->
+    <div style="flex: 1;">
+    <figure>
+      <img src="images/Kanban_sprint_3_end.png" alt="Sprint 3 End" style="width: 100%;"/>
+      <figcaption style="text-align: center; font-size: 0.9em;">End</figcaption>
+    </figure>
+  </div>
 </div>
 
+<!-- Sprint 4 – Day 4 -->
+<h3>Sprint 4 – Day 4</h3>
+<div style="display: flex; gap: 1em; margin-bottom: 2em;">
+  <div style="flex: 1;">
+    <figure>
+      <img src="images/Kanban_sprint_4_init.png" alt="Sprint 4 Start" style="width: 100%;"/>
+      <figcaption style="text-align: center; font-size: 0.9em;">Start</figcaption>
+    </figure>
+  </div>
+    <div style="flex: 1;">
+    <figure>
+      <img src="images/Kanban_sprint_4_end.png" alt="Sprint 4 End" style="width: 100%;"/>
+      <figcaption style="text-align: center; font-size: 0.9em;">End</figcaption>
+    </figure>
+  </div>
+</div>
 
+<!-- Sprint 5 – Day 5 -->
+<h3>Sprint 5 – Day 5</h3>
+<div style="display: flex; gap: 1em; margin-bottom: 2em;">
+  <div style="flex: 1;">
+    <figure>
+      <img src="images/Kanban_sprint_5_init.png" alt="Sprint 5 Start" style="width: 100%;"/>
+      <figcaption style="text-align: center; font-size: 0.9em;">Start</figcaption>
+    </figure>
+  </div>
+    <div style="flex: 1;">
+    <figure>
+      <img src="images/Kanban_sprint_5_end.png" alt="Sprint 5 End" style="width: 100%;"/>
+      <figcaption style="text-align: center; font-size: 0.9em;">End</figcaption>
+    </figure>
+  </div>
+</div>
 
 **Sprint Breakdown & Detailed Tasks**
 
