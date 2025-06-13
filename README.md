@@ -83,19 +83,21 @@ The project integrates robust data analytics, machine learning modeling, and adv
 
 ## Project Objectives
 
-- Predict and classify disease incidence based on climate inputs
-- Identify which climate metrics (historic vs. anomalous) drive disease prevalence
-- Compare sensitivity between natural and agricultural systems
-- Deploy an interactive Streamlit dashboard for risk visualization and scenario testing
-- Ensure the approach is explainable and reproducible for real-world use
+- **Quantify Climate Drivers:** Measure how contemporaneous weather, deviations from monthly normals (anomalies), and long-term historical climate each influence plant-disease prevalence.  
+- **Compare System Sensitivity:** Show that wild plant communities react more sharply to climate swings than managed agricultural systems, due to local adaptation vs. buffering practices like irrigation or pesticides.  
+- **Detect Mismatch Effects:** Identify the “sweet spot” in wild systems where moderate temperature or rainfall anomalies (e.g. +2.7 °C or ±X mm) maximize disease risk, then decline at extreme anomalies.  
+- **Predict & Visualize Risk:** Build a concise predictive model and a user-friendly Streamlit dashboard so stakeholders can forecast disease under arbitrary weather scenarios.  
+- **Ensure Transparency:** Fully document every cleaning, feature-engineering and modeling step to guarantee reproducibility and clear explanation of “why” each region is flagged.
+
 
 
 ## Business Requirements
 
-- **Enable risk forecasting** based on temperature and rainfall inputs.
-- **Provide incidence classification** across zones for easy interpretability.
-- **Highlight hotspots** on a global scale to prioritize surveillance.
-- **Facilitate exploratory scenario simulation** for stakeholders via an interactive interface.
+- **Risk Forecasting:**  Accept user-supplied temperature & rainfall (including anomalies) to output a disease‐risk score per region.  
+- **Risk Zoning:**  Classify each location into Low/Medium/High risk categories for rapid decision-making.  
+- **Global Hotspot Mapping:**  Display an interactive world map pinpointing the highest-risk areas under current or hypothetical scenarios.  
+- **Interactive Scenario Testing:**  Provide sliders or input controls so non-technical users (farmers, agronomists, conservationists) can simulate “What if June is +3 °C?” and instantly see updated risk zones.  
+- **Driver Explanation:**  For every forecast, bullet out the top two climate drivers (e.g. “+2.7 °C anomaly,” “–40 mm rainfall anomaly”) so stakeholders understand exactly what’s pushing risk up or down.
 
 
 ## Hypothesis and how to validate?

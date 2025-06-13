@@ -206,6 +206,12 @@ with tab1:
             "For farmers, this means you can trust the model to forecast disease pressure and optimize interventions.",
             "For environmental agencies, this validates the model’s reliability across diverse conditions."
         ], style="ag")
+        
+        insight_box([
+        "Scatter R² values in Tab 1 measure fit on the entire train/test splits, which can be optimistic.",
+        "The 5-Fold CV table (Tab 2) averages R² over held-out folds, giving a more conservative, unbiased estimate.",
+        "Large differences highlight data variance and help detect potential overfitting."
+    ], style="ag")
 
 
     # ───────── Wild Block ─────────
@@ -260,6 +266,12 @@ with tab1:
             "Agencies can prioritize surveillance in areas with larger prediction errors.",
             "Supports early-warning efforts to protect ecosystem health."
         ], style="wd")
+        
+        insight_box([
+        "Scatter R² values in Tab 1 measure fit on entire train/test splits and may appear higher.",
+        "The 5-Fold CV table (Tab 2) reports average R² across validation folds, reflecting true generalization.",
+        "Discrepancies between them reveal model stability and highlight overfitting risks."
+    ], style="wd")
 
 
 # ───────── Tab 2: Model Rankings ─────────
