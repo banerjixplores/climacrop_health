@@ -1,9 +1,13 @@
 import streamlit as st
+from pathlib import Path
+
+# Build the correct path to your icon folder
+ICON_PATH = Path(__file__).parent / "images" / "plant_health_logo.ico"
 
 st.set_page_config(
     page_title="Plant Health Dashboard",
-    page_icon="../images/plant_health_logo.jpg",
-    layout="wide"
+    page_icon=str(ICON_PATH),    # Streamlit will load the .ico for you
+    layout="wide",
 )
 
 st.markdown(
